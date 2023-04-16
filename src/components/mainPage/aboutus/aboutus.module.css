@@ -20,3 +20,42 @@
     width:100%;
     background-color: burlywood;
 }
+
+.main img{
+    height: 100%;
+    display: inline-block;
+}
+
+.adjust{
+    display: inline-block;
+    width: calc(100% - 632.02px);
+    position: relative;
+    z-index: 10;
+}
+
+.forBlur{
+    height:300px;
+    width: 100%;
+    background-color: rgba(222, 184, 135, 0.411);
+    margin-top: -305px;
+    position: relative;
+    z-index: 10;
+    background: linear-gradient(94deg, rgba(7,86,123,1) 54%, rgba(7,86,123,0.9122242647058824) 58%, rgba(7,86,123,0.09429709383753504) 100%);
+    padding: 30px 10%;
+
+}
+
+.quote{
+    width: 38%;
+    font-size: 20px;
+    font-weight: 500;
+}
+.name{
+    font-size: 20px;
+    font-weight: 500;
+    margin-top: 40px;
+}
+.pos{
+    font-size: 17px;
+    font-weight: 300;
+}
