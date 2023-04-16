@@ -1,0 +1,22 @@
+.majorContainer{
+    width:100%;
+}
+.header{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    color: black;
+}
+.header p{
+    font-size: 45px;
+    font-weight: 700;
+    color: #07567B;
+    margin:40px 0px;
+}
+.main{
+    height:300px;
+    width:100%;
+    background-color: burlywood;
+}

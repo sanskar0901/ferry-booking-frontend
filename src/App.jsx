@@ -5,6 +5,10 @@ import { loadStripe } from '@stripe/stripe-js';
 import axios from 'axios'
 const stripePromise = loadStripe('pk_test_51MwPq1SB27RQWA1pF86ZOljFE3IWwg5p5lN2ZltOna4T4MrVUsvNjWu61s1LtiQd7o7NmNbMYeggPYB1bqGYHZyc00Raj2RPlu');
 
+import { Header } from './components/mainPage/header/header';
+import { Intro } from './components/mainPage/intro/intro';
+import { Aboutus } from './components/mainPage/aboutus/aboutus';
+
 function App() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -66,7 +70,7 @@ function App() {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      {/* <form onSubmit={handleSubmit}>
         <label>
           Name:
           <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
@@ -93,7 +97,10 @@ function App() {
         </label>
         <br />
         <button type="submit">Pay</button>
-      </form>
+      </form> */}
+      <Header />
+      <Intro />
+      <Aboutus />
     </div>
   );
 }
@@ -155,4 +162,4 @@ function AppWrapper() {
   return <App />;
 }
 
-export default AppWrapper;
+export default App;
