@@ -41,12 +41,12 @@
     position: relative;
     z-index: 10;
     background: linear-gradient(94deg, rgba(7,86,123,1) 54%, rgba(7,86,123,0.9122242647058824) 58%, rgba(7,86,123,0.09429709383753504) 100%);
-    padding: 30px 10%;
+    padding: 42px 10%;
 
 }
 
 .quote{
-    width: 38%;
+    width: 48%;
     font-size: 20px;
     font-weight: 500;
 }

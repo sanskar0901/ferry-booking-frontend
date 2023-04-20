@@ -8,6 +8,7 @@ const stripePromise = loadStripe('pk_test_51MwPq1SB27RQWA1pF86ZOljFE3IWwg5p5lN2Z
 import { Header } from './components/mainPage/header/header';
 import { Intro } from './components/mainPage/intro/intro';
 import { Aboutus } from './components/mainPage/aboutus/aboutus';
+import { FooterTop } from './components/mainPage/footer/footer';
 
 function App() {
   const [name, setName] = useState('');
@@ -101,6 +102,7 @@ function App() {
       <Header />
       <Intro />
       <Aboutus />
+      <FooterTop />
     </div>
   );
 }
