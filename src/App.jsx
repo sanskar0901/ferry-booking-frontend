@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+
 import axios from 'axios'
 const stripePromise = loadStripe('pk_test_51MwPq1SB27RQWA1pF86ZOljFE3IWwg5p5lN2ZltOna4T4MrVUsvNjWu61s1LtiQd7o7NmNbMYeggPYB1bqGYHZyc00Raj2RPlu');
 
@@ -10,6 +12,7 @@ import { Intro } from './components/mainPage/intro/intro';
 import { Aboutus } from './components/mainPage/aboutus/aboutus';
 import { FooterTop } from './components/mainPage/footer/footer';
 import { Booking } from './components/mainPage/bookingSection/booking';
+import {Adminpage} from './components/adminPage/Adminpage'
 
 function App() {
   const [name, setName] = useState('');
@@ -105,6 +108,7 @@ function App() {
       <Aboutus />
       {/* <Booking /> */}
       <FooterTop />
+      {/* <Adminpage/> */}
     </div>
   );
 }
@@ -141,6 +145,7 @@ function PaymentSuccess(session) {
   );
 
 }
+
 
 function PaymentCancelled() {
   return <h1>Payment Cancelled</h1>;
