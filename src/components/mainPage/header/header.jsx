@@ -7,9 +7,9 @@ export const Header = () => {
         <div className={classes.majorContainer}>
             <img src={logo} className={classes.logo} />
             <ul className={classes.list} >
-                <li>About</li>
-                <li>Destinations</li>
-                <li>Calendar</li>
+                <li className={classes.opt}>About</li>
+                <li className={classes.opt}>Destinations</li>
+                <li className={classes.opt}>Calendar</li>
                 <li>
                     <button>
                         Book Now!

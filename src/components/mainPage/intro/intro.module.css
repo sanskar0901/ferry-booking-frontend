@@ -23,6 +23,17 @@
 }
 .logo{
     height:25%;
+}
 
+@media screen and (max-width:600px){
+    .logo{
+        width:90%;
+        height: auto;
+    }
+    .majorContainer div a{
+        font-size: 17px;
+        margin: 0px 5px;
+        padding:10px 30px;
+    }
 }
 

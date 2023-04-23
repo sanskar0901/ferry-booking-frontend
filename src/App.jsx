@@ -9,6 +9,7 @@ import { Header } from './components/mainPage/header/header';
 import { Intro } from './components/mainPage/intro/intro';
 import { Aboutus } from './components/mainPage/aboutus/aboutus';
 import { FooterTop } from './components/mainPage/footer/footer';
+import { Booking } from './components/mainPage/bookingSection/booking';
 
 function App() {
   const [name, setName] = useState('');
@@ -102,6 +103,7 @@ function App() {
       <Header />
       <Intro />
       <Aboutus />
+      {/* <Booking /> */}
       <FooterTop />
     </div>
   );
