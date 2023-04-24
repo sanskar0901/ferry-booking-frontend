@@ -106,7 +106,7 @@ function App() {
       <Header />
       <Intro />
       <Aboutus />
-      {/* <Booking /> */}
+      <Booking />
       <FooterTop />
       {/* <Adminpage/> */}
     </div>
