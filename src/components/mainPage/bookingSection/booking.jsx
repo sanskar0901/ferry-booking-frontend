@@ -4,9 +4,24 @@ import classes from './booking.module.css'
 import mapImg1 from '../../../assets/map1.svg'
 import mapImg2 from '../../../assets/map2.svg'
 
+const Modal = ({children,setModal1}) => {
+    return(
+        <>
+            <div className={classes.modalMaj}>
+                <div className={classes.modalBackdrop} onClick={()=>setModal1(false)}>
+                </div>
+                <div style={{position:'relative', zIndex: 1000}}>
+                    {children}
+                </div>
+            </div>
+        </>
+    )
+}
+
 export const Booking = () => {
 
     const [travellers, setTravellers] = useState(1)
+    const [modal1, setModal1] = useState(true)
 
     // for (let i = 0; i < 24; i++) {
     //     for (let j = 0; j < 60; j += 20) {
@@ -18,19 +33,34 @@ export const Booking = () => {
 
     return (
         <div className={classes.majorContainer}>
+            {
+                modal1 &&
+                <Modal setModal1={setModal1}>
+                    <h2>Select Date</h2>
+                    <input type="date" style={{width:300, height:60, fontSize: 22}} className={classes.dateSelector}/>
+                </Modal>
+            }
             <div className={classes.dateP}>
+                <p><p style={{fontSize:34, fontWeight: 600, display:'inline-block'}}>46</p>mins</p>
+                <p style={{fontSize:12}}>Estimated Time</p>
             </div>
             <div className={classes.map}>
                 <div className={classes.origin}>
                     <img src={mapImg1}/>
                     <div className={classes.cover}>
-
+                        <p>From</p>
+                        <select>
+                            <option>place 1</option>
+                        </select>
                     </div>
                 </div>
                 <div className={classes.dest}>
                     <img src={mapImg2} />
                     <div className={classes.cover}>
-                        
+                        <p>To</p>
+                        <select>
+                            <option>place 2</option>
+                        </select>
                     </div>
                 </div>
             </div>
