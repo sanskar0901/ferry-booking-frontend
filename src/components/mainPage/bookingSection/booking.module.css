@@ -125,6 +125,9 @@
     font-size: 18px;
     font-weight: 700;
 }
+.button:hover{
+    scale: 1.02;
+}
 
 
 .modalMaj{
