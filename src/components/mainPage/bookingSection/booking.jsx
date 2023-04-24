@@ -21,7 +21,7 @@ const Modal = ({children,setModal1}) => {
 export const Booking = () => {
 
     const [travellers, setTravellers] = useState(1)
-    const [modal1, setModal1] = useState(true)
+    const [modal1, setModal1] = useState(false)
 
     // for (let i = 0; i < 24; i++) {
     //     for (let j = 0; j < 60; j += 20) {
@@ -75,7 +75,7 @@ export const Booking = () => {
                         </div>
                     </div>
                 </div>
-                <div className={classes.inpCtn}>
+                <div className={classes.inpCtn} onClick={()=>setModal1(true)}>
                     <p>Departure Date</p>
                     <div className={classes.inp}>
                         <p><p style={{fontSize:34, fontWeight: 600, display:'inline-block'}}>10</p>Apr'23</p>
