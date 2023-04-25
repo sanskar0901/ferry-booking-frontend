@@ -11,7 +11,7 @@ import { Header } from './components/mainPage/header/header';
 import { Intro } from './components/mainPage/intro/intro';
 import { Aboutus } from './components/mainPage/aboutus/aboutus';
 import { FooterTop } from './components/mainPage/footer/footer';
-import AppWrapper from './components/mainPage/bookingSection/booking';
+import BookingWrapper from './components/mainPage/bookingSection/booking';
 import {Adminpage} from './components/adminPage/Adminpage'
 
 function App() {
@@ -79,7 +79,7 @@ function App() {
       <Intro />
       <Aboutus />
       {/* <Booking /> */}
-      <AppWrapper/>
+      <BookingWrapper/>
       <FooterTop />
       {/* <Adminpage/> */}
     </div>

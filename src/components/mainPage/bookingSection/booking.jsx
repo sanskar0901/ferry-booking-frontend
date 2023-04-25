@@ -196,7 +196,7 @@ function PaymentSuccess(session) {
           console.log("data===", res.data.metadata)
           setData(res.data.metadata)
           console.log("data===", data)
-          await axios.post(`http://localhost:5000/booking/bookingadd/${res.data.metadata.booking_id}`).then((res) => {
+          await axios.post(`${API_URI}/booking/bookingadd/${res.data.metadata.booking_id}`).then((res) => {
             console.log(res.data)
             setQr(res.data.url)
   
