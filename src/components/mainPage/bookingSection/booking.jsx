@@ -102,10 +102,10 @@ const handleSubmit = async (e) => {
     return (
         <div className={classes.majorContainer}>
           
-            <div className={classes.dateP}>
+            {/* <div className={classes.dateP}>
                 <p><p style={{ fontSize: 34, fontWeight: 600, display: 'inline-block' }}>46</p>mins</p>
                 <p style={{ fontSize: 12 }}>Estimated Time</p>
-            </div>
+            </div> */}
             <div className={classes.map}>
                 <div className={classes.origin}>
                     <img src={mapImg1} />
@@ -118,6 +118,10 @@ const handleSubmit = async (e) => {
                             <option value="Starting point 3">Starting point 3</option>
                         </select>
                     </div>
+                </div>
+                <div className={classes.dateP}>
+                    <p><p style={{ fontSize: 34, fontWeight: 600, display: 'inline-block' }}>46</p>mins</p>
+                    <p style={{ fontSize: 12 }}>Estimated Time</p>
                 </div>
                 <div className={classes.dest}>
                     <img src={mapImg2} />
