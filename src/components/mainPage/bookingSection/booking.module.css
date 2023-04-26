@@ -125,8 +125,23 @@
     margin-top: 50px;
     font-size: 18px;
     font-weight: 700;
+    color: white;
 }
 .button:hover{
+    scale: 1.02;
+}
+
+.button1{
+    padding: 5px 25px;
+    margin: 0px auto;
+    background-color: #07567B;
+    border: none;
+    border-radius: 20px;
+    font-size: 18px;
+    font-weight: 700;
+    color: white;
+}
+.button1:hover{
     scale: 1.02;
 }
 
@@ -171,10 +186,39 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
+}
+.content{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    width: 100%;
+    gap:10px;
+    padding-bottom: 20px;
 }
 
+.content h4{
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 20px;
+
+}
+.content input{
+    background-color: rgba(201, 201, 201, 0.445);
+    padding: 6px 15px;
+    border-radius: 10px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-bottom: 2px solid #07567B;
+
+}
 
 @media screen and (max-width:800px){
+
+    .box{
+        width:95%;
+    }
     .map{
         width:100%;
         display: flex;
