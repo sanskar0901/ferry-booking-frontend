@@ -234,19 +234,35 @@ function PaymentSuccess(session) {
     const query = new URLSearchParams(search);
     const session_id = query.get('session_id');
   
-    if (session_id) {
-      return (
-        <Elements stripe={stripePromise}>
-          <PaymentSuccess session={session_id} />
-        </Elements>
-      );
-    }
+    // if (session_id) {
+    //   return (
+    //     <Elements stripe={stripePromise}>
+    //       <PaymentSuccess session={session_id} />
+    //     </Elements>
+    //   );
+    // }
   
     if (window.location.pathname === '/payment-cancelled') {
       return <PaymentCancelled />;
     }
   
-    return <Booking />;
+    return(
+      <>
+        {
+          session_id &&
+          <div className={classes.modalMaj}>
+            <div className={classes.modalBackdrop}></div>
+            <div className={classes.box}>
+              <Elements stripe={stripePromise}>
+                <PaymentSuccess session={session_id} />
+              </Elements>
+            </div>
+          </div>
+
+        }
+        <Booking />
+      </>
+    );
   }
   
   export default BookingWrapper;
