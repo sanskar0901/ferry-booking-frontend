@@ -291,7 +291,7 @@ function PaymentSuccess(session) {
     return(
       <>
         {
-          !session_id && modal &&
+          session_id && modal &&
           <div className={classes.modalMaj}>
             <div className={classes.modalBackdrop} onClick={()=>setModal(false)}></div>
             <div className={classes.box}>
