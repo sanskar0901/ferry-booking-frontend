@@ -13,6 +13,7 @@ import { Aboutus } from './components/mainPage/aboutus/aboutus';
 import { FooterTop } from './components/mainPage/footer/footer';
 import BookingWrapper from './components/mainPage/bookingSection/booking';
 import {Adminpage} from './components/adminPage/Adminpage'
+import Mainpage from './components/mainPage/Mainpage';
 
 function App() {
   const [name, setName] = useState('');
@@ -40,47 +41,15 @@ function App() {
 
 
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    console.log('Submit')
 
-    const data = {
-      name: name,
-      email: email,
-      date: date,
-      ferryId: ferryId,
-      seats: seats
-    }
-    axios.post(`http://localhost:5000/booking/newBooking/${ferryId}`, data)
-      .then(async (res) => {
-        console.log(res.data)
-
-        const sessionId = await res.data.sessionId;
-        console.log(sessionId)
-
-        // Redirect to the Stripe checkout page
-        const stripe = await stripePromise;
-        await stripe.redirectToCheckout({ sessionId }).then(async (response) => {
-          console.log(response.data)
-          setResp(response.data)
-          console.log(resp)
-        }).catch(async (err) => {
-          console.log(err.message)
-        })
-      }).catch((err) => {
-        console.log(err)
-      })
-
-  };
 
   return (
     <div>
-      <Header />
-      <Intro />
-      <Aboutus />
-      {/* <Booking /> */}
-      <BookingWrapper/>
-      <FooterTop />
+     <Router>
+      <Routes>
+        <Route path="/" element={<Mainpage/>}/>
+      </Routes>
+     </Router>
       {/* <Adminpage/> */}
     </div>
   );

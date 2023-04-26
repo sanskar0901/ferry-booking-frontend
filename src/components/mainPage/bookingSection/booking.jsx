@@ -4,6 +4,10 @@ import DatePicker from 'react-datepicker';
 import axios from 'axios'
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
+import { useLocation } from 'react-router-dom';
+import Cookies from 'js-cookie'
+
+
 const stripePromise = loadStripe('pk_test_51MwPq1SB27RQWA1pF86ZOljFE3IWwg5p5lN2ZltOna4T4MrVUsvNjWu61s1LtiQd7o7NmNbMYeggPYB1bqGYHZyc00Raj2RPlu');
 
 import mapImg1 from '../../../assets/map1.svg'
@@ -230,9 +234,22 @@ function PaymentSuccess(session) {
   }
   
   function BookingWrapper() {
-    const { search } = window.location;
-    const query = new URLSearchParams(search);
-    const session_id = query.get('session_id');
+    const location = useLocation();
+
+    // Extract the session ID and payment success status from the query params
+    const searchParams = new URLSearchParams(location.search);
+    searchParams.get('session_id')&&Cookies.set('session_id', searchParams.get('session_id'));
+    const session_id = Cookies.get('session_id');
+    const paymentSuccess = searchParams.get('payment_success');
+  
+    // Do something with the query params (e.g. display a success message)
+    // ...
+  
+    // Truncate the query params from the URL
+    const newPathname = location.pathname;
+    window.history.replaceState(null, '', newPathname);
+    
+    // const session_id = query.get('session_id');
   
     // if (session_id) {
     //   return (
