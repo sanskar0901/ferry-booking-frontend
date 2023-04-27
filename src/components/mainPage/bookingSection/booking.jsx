@@ -226,7 +226,7 @@ function PaymentSuccess(session) {
   useEffect(() => {
     axios.get(`https://api.stripe.com/v1/checkout/sessions/${session.session}`, { headers: { Authorization: `Bearer sk_test_51MwPq1SB27RQWA1pGKmMCb8Zu6ZuLFi8aZ7yIa43bz7DP15Zqf1phUuNDen2nWOES4A4armJjS3uQqq2nVjuPkm900d4egNacl ` } })
       .then(async (res) => {
-        // console.log("data===", res.data.metadata)
+        console.log("data===", res.data.metadata)
         setData(res.data.metadata)
         console.log("data===", data)
         await axios.post(`${API_URI}/booking/bookingadd/${res.data.metadata.booking_id}`).then((res) => {
@@ -244,7 +244,7 @@ function PaymentSuccess(session) {
         <p className='text-black'>
           <b>Date:</b> {new Date(data.date).getDate() + "/" + (new Date(data.date).getMonth() + 1) + "/" + new Date(data.date).getFullYear()}<br></br>
           <br></br>
-          <b>Time:</b> {data.time_slot}<br></br>
+          <b>Time:</b> {data.time}<br></br>
           <b>Name:</b> {data.name}<br></br>
           <b>Ferry No.:</b> {data.ferryNo}<br></br>
 
