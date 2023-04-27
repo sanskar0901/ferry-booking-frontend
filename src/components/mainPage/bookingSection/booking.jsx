@@ -244,6 +244,9 @@ function PaymentSuccess(session) {
         <p className='text-black'>
           <b>Date:</b> {data.date}<br></br>
           <br></br>
+<b>Name:</b> {data.name}<br></br>
+
+          <br></br>
           <b>No. of seats:</b> {data.seats}<br></br>
           <br></br>
           <img src={`data:image/png;base64,${qr}`} alt="qr" />
