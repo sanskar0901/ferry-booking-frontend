@@ -78,7 +78,7 @@ const handleSubmit = async (e) => {
 
     const data = {
       date: date,
-      seats: travellers
+      seats: travellers,
       name, 
     }
     axios.post(`${API_URI}/booking/newBooking/${ferryId}`, data)
