@@ -48,6 +48,7 @@ function App() {
      <Router>
       <Routes>
         <Route path="/" element={<Mainpage/>}/>
+        <Route path="/admin" element={<Adminpage/>}/>
       </Routes>
      </Router>
       {/* <Adminpage/> */}
