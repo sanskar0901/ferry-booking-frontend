@@ -18,6 +18,7 @@ import { API_URI } from '../../constants/apiUrl.constant';
 export const Booking = () => {
 
     const [travellers, setTravellers] = useState(1)
+    const [name, setName]= useState("") 
     const [date, setDate] = useState(new Date())
     const [from, setFrom] = useState('')
     const [to, setTo] = useState('')
@@ -78,6 +79,7 @@ const handleSubmit = async (e) => {
     const data = {
       date: date,
       seats: travellers
+      name, 
     }
     axios.post(`${API_URI}/booking/newBooking/${ferryId}`, data)
       .then(async (res) => {
@@ -122,7 +124,7 @@ const handleSubmit = async (e) => {
                     <h4>Total Price</h4>
                     <p>{price}</p>
                     <h4>Enter Name</h4>
-                    <input type="text"></input>
+                    <input type="text" onChange={(e)=>setName(e.target.value)></input>
                   </div>  
                   <button className={classes.button1} onClick={(e)=>{handleSubmit(e)}} disabled={travellers>capacity}>Book Now</button>
                 </div>
