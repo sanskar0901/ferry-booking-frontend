@@ -18,6 +18,7 @@ import { API_URI } from '../../constants/apiUrl.constant';
 export const Booking = () => {
 
     const [travellers, setTravellers] = useState(1)
+    const [name, setName]= useState("") 
     const [date, setDate] = useState(new Date())
     const [from, setFrom] = useState('')
     const [to, setTo] = useState('')
@@ -26,6 +27,7 @@ export const Booking = () => {
     const [capacity, setCapacity] = useState()
     const [price,setPrice]=useState();
     const [ferryId,setFerryId]=useState();
+    const [modal,setModal]=useState(false);
     console.log(date)
     const timeSlots = [];
     for (let i = 0; i < 24; i++) {
@@ -76,7 +78,8 @@ const handleSubmit = async (e) => {
 
     const data = {
       date: date,
-      seats: travellers
+      seats: travellers,
+      name, 
     }
     axios.post(`${API_URI}/booking/newBooking/${ferryId}`, data)
       .then(async (res) => {
@@ -106,6 +109,28 @@ const handleSubmit = async (e) => {
                 <p><p style={{ fontSize: 34, fontWeight: 600, display: 'inline-block' }}>46</p>mins</p>
                 <p style={{ fontSize: 12 }}>Estimated Time</p>
             </div> */}
+            {
+              modal &&
+              <div className={classes.modalMaj}>
+                <div className={classes.modalBackdrop} onClick={()=>setModal(false)}></div>
+                <div className={classes.box}>
+                  <div className={classes.content}>
+                    <h4>Date</h4>
+                    <p>{date.getDate()}</p>
+                    <h4>Travellors</h4>
+                    <p>{travellers}</p>
+                    <h4>Time</h4>
+                    <p>{time}</p>
+                    <h4>Total Price</h4>
+                    <p>{price}</p>
+                    <h4>Enter Name</h4>
+                    <input type="text" onChange={(e)=>setName(e.target.value)}></input>
+                  </div>  
+                  <button className={classes.button1} onClick={(e)=>{handleSubmit(e)}} disabled={travellers>capacity}>Book Now</button>
+                </div>
+              </div>
+
+            }
             <div className={classes.map}>
                 <div className={classes.origin}>
                     <img src={mapImg1} />
@@ -189,7 +214,7 @@ const handleSubmit = async (e) => {
 
             </center>
             <center>
-                <button className={classes.button} onClick={(e)=>{handleSubmit(e)}} disabled={travellers>capacity}>Book Now</button>
+                <button className={classes.button} onClick={(e)=>{setModal(true)}} disabled={travellers>capacity}>Book Now</button>
             </center>
         </div>
     )
@@ -219,6 +244,9 @@ function PaymentSuccess(session) {
         <p className='text-black'>
           <b>Date:</b> {data.date}<br></br>
           <br></br>
+<b>Name:</b> {data.name}<br></br>
+
+          <br></br>
           <b>No. of seats:</b> {data.seats}<br></br>
           <br></br>
           <img src={`data:image/png;base64,${qr}`} alt="qr" />
@@ -236,6 +264,8 @@ function PaymentSuccess(session) {
   function BookingWrapper() {
     const location = useLocation();
 
+    const [modal, setModal] = useState(true)
+
     // Extract the session ID and payment success status from the query params
     const searchParams = new URLSearchParams(location.search);
     searchParams.get('session_id')&&Cookies.set('session_id', searchParams.get('session_id'));
@@ -251,19 +281,35 @@ function PaymentSuccess(session) {
     
     // const session_id = query.get('session_id');
   
-    if (session_id) {
-      return (
-        <Elements stripe={stripePromise}>
-          <PaymentSuccess session={session_id} />
-        </Elements>
-      );
-    }
+    // if (session_id) {
+    //   return (
+    //     <Elements stripe={stripePromise}>
+    //       <PaymentSuccess session={session_id} />
+    //     </Elements>
+    //   );
+    // }
   
     if (window.location.pathname === '/payment-cancelled') {
       return <PaymentCancelled />;
     }
   
-    return <Booking />;
+    return(
+      <>
+        {
+          session_id && modal &&
+          <div className={classes.modalMaj}>
+            <div className={classes.modalBackdrop} onClick={()=>setModal(false)}></div>
+            <div className={classes.box}>
+              <Elements stripe={stripePromise}>
+                <PaymentSuccess session={session_id} />
+              </Elements>
+            </div>
+          </div>
+
+        }
+        <Booking />
+      </>
+    );
   }
   
   export default BookingWrapper;
