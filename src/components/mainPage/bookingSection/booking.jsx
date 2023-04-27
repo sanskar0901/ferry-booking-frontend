@@ -244,6 +244,7 @@ function PaymentSuccess(session) {
         <p className='text-black'>
           <b>Date:</b> {new Date(data.date).getDate() + "/" + (new Date(data.date).getMonth() + 1) + "/" + new Date(data.date).getFullYear()}<br></br>
           <br></br>
+          <b>Time:</b> {data.time_slot}<br></br>
           <b>Name:</b> {data.name}<br></br>
           <b>Ferry No.:</b> {data.ferryNo}<br></br>
 
