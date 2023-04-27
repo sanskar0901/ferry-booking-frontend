@@ -124,7 +124,7 @@ const handleSubmit = async (e) => {
                     <h4>Total Price</h4>
                     <p>{price}</p>
                     <h4>Enter Name</h4>
-                    <input type="text" onChange={(e)=>setName(e.target.value)></input>
+                    <input type="text" onChange={(e)=>setName(e.target.value)}></input>
                   </div>  
                   <button className={classes.button1} onClick={(e)=>{handleSubmit(e)}} disabled={travellers>capacity}>Book Now</button>
                 </div>
