@@ -219,7 +219,7 @@ export const Booking = () => {
     </div>
   )
 }
-function PaymentSuccess(session) {
+function PaymentSuccess(session, success) {
   // console.log("session=", session);
   const [data, setData] = useState({})
   const [qr, setQr] = useState("")
@@ -243,6 +243,11 @@ function PaymentSuccess(session) {
         <h1 className='text-black' style={{ fontSize: 30 }}>Payment Success</h1>
         <p className='text-black'>
           <b>Date:</b> {new Date(data.date).getDate() + "/" + (new Date(data.date).getMonth() + 1) + "/" + new Date(data.date).getFullYear()}<br></br>
+          <br></br>
+          <div className='flex gap-2'>
+            <b>From:</b> {data.from}
+            <b>To:</b> {data.to}
+          </div>
           <br></br>
           <b>Time:</b> {data.time}<br></br>
           <b>Name:</b> {data.name}<br></br>
@@ -272,7 +277,7 @@ function BookingWrapper() {
   const searchParams = new URLSearchParams(location.search);
   searchParams.get('session_id') && Cookies.set('session_id', searchParams.get('session_id'));
   const session_id = Cookies.get('session_id');
-  const paymentSuccess = searchParams.get('payment_success');
+  const success = searchParams.get('payment_success');
 
   // Do something with the query params (e.g. display a success message)
   // ...
@@ -294,24 +299,25 @@ function BookingWrapper() {
   if (window.location.pathname === '/payment-cancelled') {
     return <PaymentCancelled />;
   }
-
-  return (
-    <>
-      {
-        session_id && modal &&
-        <div className={classes.modalMaj}>
-          <div className={classes.modalBackdrop} onClick={() => setModal(false)}></div>
-          <div className={classes.box}>
-            <Elements stripe={stripePromise}>
-              <PaymentSuccess session={session_id} />
-            </Elements>
+  else {
+    return (
+      <>
+        {
+          session_id && modal &&
+          <div className={classes.modalMaj}>
+            <div className={classes.modalBackdrop} onClick={() => setModal(false)}></div>
+            <div className={classes.box}>
+              <Elements stripe={stripePromise}>
+                <PaymentSuccess session={session_id} />
+              </Elements>
+            </div>
           </div>
-        </div>
 
-      }
-      <Booking />
-    </>
-  );
+        }
+        <Booking />
+      </>
+    );
+  }
 }
 
 export default BookingWrapper;
