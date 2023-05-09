@@ -22,24 +22,18 @@ export const Booking = () => {
   const [date, setDate] = useState(new Date())
   const [from, setFrom] = useState('')
   const [to, setTo] = useState('')
-  const [time, setTime] = useState('12:00')
+  const [time, setTime] = useState('00:00')
   const [availibility, setAvailibility] = useState('')
   const [capacity, setCapacity] = useState()
   const [price, setPrice] = useState();
   const [ferryId, setFerryId] = useState();
   const [modal, setModal] = useState(false);
-  console.log(date)
-  const timeSlots = [];
-  for (let i = 0; i < 24; i++) {
-    for (let j = 0; j < 60; j += 20) {
-      let hour = i.toString().padStart(2, "0");
-      let minute = j.toString().padStart(2, "0");
-      timeSlots.push(`${hour}:${minute}`);
-    }
-  }
+  // console.log(date)
+  const [ferry, setFerry] = useState([])
+
 
   const handleSearch = () => {
-    console.log(date.toDateString())
+    // console.log(date.toDateString())
     const data = {
       to,
       from,
@@ -50,12 +44,21 @@ export const Booking = () => {
     }
     axios.post(`${API_URI}/ferry/searchFerry`, data).then(res => {
       console.log(res.data)
-      setAvailibility(res.data.message)
-      res.data.success ? setCapacity(res.data.ferry.capacity) : setCapacity(0)
-      res.data.success ? setPrice(res.data.price) : setPrice(0)
-      res.data.success ? setFerryId(res.data.ferry._id) : setFerryId(0)
+      if (!res.data.success) {
+        alert(res.data.message)
+        setAvailibility(res.data.alertmsg)
+
+      }
+      else {
+
+        setFerry(res.data.ferry)
+        console.log(ferry)
+        setAvailibility(res.data.alertmsg)
+      }
+
 
     })
+
   }
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
@@ -81,6 +84,7 @@ export const Booking = () => {
       seats: travellers,
       name,
     }
+    console.log(ferryId)
     axios.post(`${API_URI}/booking/newBooking/${ferryId}`, data)
       .then(async (res) => {
         console.log(res.data)
@@ -167,17 +171,17 @@ export const Booking = () => {
           <div className={classes.inp}>
             <p><p style={{ fontSize: 34, fontWeight: 600, display: 'inline-block' }}>{travellers}</p>Travellers</p>
             <div>
-              <button style={{ borderRight: "1px solid #BEBEBE" }} onClick={() => setTravellers(travellers + 1)}>+</button>
-              <button onClick={() => travellers !== 1 && setTravellers(travellers - 1)}>-</button>
+              <button style={{ borderRight: "1px solid #BEBEBE" }} onClick={() => travellers !== 1 && setTravellers(travellers - 1)}>-</button>
+              <button onClick={() => setTravellers(travellers + 1)}>+</button>
             </div>
           </div>
         </div>
         <div className={classes.inpCtn}>
-          <div className='flex'><p>Departure Date</p><DatePicker
-            className="w-[2vw] px-1 py-2 leading-tight text-blue-700 placeholder:text-blue-400 focus:outline-none focus:shadow-outline hover:cursor-pointer bg-white"
+          <div className='flex'><DatePicker
+            className=' grid grid-col-3 w-[15vw] px-1 py-0 leading-tight text-blue-700 placeholder:text-[#07567B] focus:outline-none focus:shadow-outline hover:cursor-pointer bg-white'
             onChange={(date) => { setDate(date) }}
             dateFormat="dd-MM-yyyy"
-            placeholderText={"⬇"}
+            placeholderText={"Departure Date ⬇"}
             required
           /></div>
           <p className='flex items-end'>
@@ -188,11 +192,17 @@ export const Booking = () => {
           <p>Departure Time</p>
           <div className={classes.inp}>
             <p style={{ fontSize: 34, fontWeight: 600, display: 'inline-block' }}>{time}</p>
-            <select id="time-slot" value={time} onChange={(e) => setTime(e.target.value)} className=' grid grid-col-3 w-[2vw] px-1 py-2 leading-tight text-blue-700 placeholder:text-blue-400 focus:outline-none focus:shadow-outline hover:cursor-pointer bg-white'>
+            <select id="time-slot" value={time} onChange={(e) => {
+              setTime(e.target.value);
+              setPrice(e.target.options[e.target.selectedIndex].getAttribute("data-price"));
+              setCapacity(e.target.options[e.target.selectedIndex].getAttribute("data-capacity"));
+              setFerryId(e.target.options[e.target.selectedIndex].getAttribute("data-ferryId"));
+            }} className=' grid grid-col-3 w-[2vw] px-1 py-2 leading-tight text-black placeholder:text-blue-400 focus:outline-none focus:shadow-outline hover:cursor-pointer bg-white'>
               <option value="">Select a time slot</option>
-              {timeSlots.map((time, index) => (
-                <option className='p-2' key={index} value={time}>
-                  {time}
+              {ferry.map((ferr, index) => (
+                <option className={`p-2 flex justify-between gap-5  ${ferr.capacity < 10 ? 'text-rose-700' : `${ferr.capacity < 20 ? 'text-yellow-400' : 'text-green-500'}`}`} key={index} value={ferr.time_slot} data-price={ferr.fare * travellers} data-ferryId={ferr._id}
+                  data-capacity={ferr.capacity}>
+                  {ferr.time_slot}
                 </option>
               ))}
             </select>
@@ -214,9 +224,9 @@ export const Booking = () => {
 
       </center>
       <center>
-        <button className={classes.button} onClick={(e) => { setModal(true) }} disabled={travellers > capacity}>Book Now</button>
+        <button className={classes.button} onClick={(e) => { setModal(true) }} disabled={travellers > capacity && ferryId == "" && time == "" && date == ""}>Book Now</button>
       </center>
-    </div>
+    </div >
   )
 }
 function PaymentSuccess(session, success) {
