@@ -9,16 +9,15 @@ import Cookies from 'js-cookie'
 
 
 const stripePromise = loadStripe('pk_test_51MwPq1SB27RQWA1pF86ZOljFE3IWwg5p5lN2ZltOna4T4MrVUsvNjWu61s1LtiQd7o7NmNbMYeggPYB1bqGYHZyc00Raj2RPlu');
-
 import mapImg1 from '../../../assets/map1.svg'
 import mapImg2 from '../../../assets/map2.svg'
 import { API_URI } from '../../constants/apiUrl.constant';
 
 
 export const Booking = () => {
-
   const [travellers, setTravellers] = useState(1)
   const [name, setName] = useState("")
+  const [email, setEmail] = useState("")
   const [date, setDate] = useState(new Date())
   const [from, setFrom] = useState('')
   const [to, setTo] = useState('')
@@ -28,12 +27,10 @@ export const Booking = () => {
   const [price, setPrice] = useState();
   const [ferryId, setFerryId] = useState();
   const [modal, setModal] = useState(false);
-  // console.log(date)
   const [ferry, setFerry] = useState([])
 
 
   const handleSearch = () => {
-    // console.log(date.toDateString())
     const data = {
       to,
       from,
@@ -47,16 +44,12 @@ export const Booking = () => {
       if (!res.data.success) {
         alert(res.data.message)
         setAvailibility(res.data.alertmsg)
-
       }
       else {
-
         setFerry(res.data.ferry)
         console.log(ferry)
         setAvailibility(res.data.alertmsg)
       }
-
-
     })
 
   }
@@ -77,12 +70,14 @@ export const Booking = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    window.alert('You Will Get Only 5 Min To Complete Your Payment')
     console.log('Submit')
 
     const data = {
       date: date,
       seats: travellers,
       name,
+      email,
     }
     console.log(ferryId)
     axios.post(`${API_URI}/booking/newBooking/${ferryId}`, data)
@@ -90,29 +85,20 @@ export const Booking = () => {
         console.log(res.data)
         const sessionId = await res.data.sessionId;
         console.log(sessionId)
-
-        // Redirect to the Stripe checkout page
         const stripe = await stripePromise;
         await stripe.redirectToCheckout({ sessionId }).then(async (response) => {
           console.log(response.data)
           setResp(response.data)
-          //   console.log(resp)
         }).catch(async (err) => {
           console.log(err.message)
         })
       }).catch((err) => {
         console.log(err)
       })
-
   };
 
   return (
     <div className={classes.majorContainer}>
-
-      {/* <div className={classes.dateP}>
-                <p><p style={{ fontSize: 34, fontWeight: 600, display: 'inline-block' }}>46</p>mins</p>
-                <p style={{ fontSize: 12 }}>Estimated Time</p>
-            </div> */}
       {
         modal &&
         <div className={classes.modalMaj}>
@@ -121,7 +107,7 @@ export const Booking = () => {
             <div className={classes.content}>
               <h4>Date</h4>
               <p>{date.getDate()}</p>
-              <h4>Travellors</h4>
+              <h4>Travellers</h4>
               <p>{travellers}</p>
               <h4>Time</h4>
               <p>{time}</p>
@@ -129,6 +115,8 @@ export const Booking = () => {
               <p>{price}</p>
               <h4>Enter Name</h4>
               <input type="text" onChange={(e) => setName(e.target.value)}></input>
+              <h4>Enter Enail</h4>
+              <input type="text" onChange={(e) => setEmail(e.target.value)}></input>
             </div>
             <button className={classes.button1} onClick={(e) => { handleSubmit(e) }} disabled={travellers > capacity}>Book Now</button>
           </div>
@@ -283,31 +271,27 @@ function BookingWrapper() {
 
   const [modal, setModal] = useState(true)
 
-  // Extract the session ID and payment success status from the query params
   const searchParams = new URLSearchParams(location.search);
   searchParams.get('session_id') && Cookies.set('session_id', searchParams.get('session_id'));
   const session_id = Cookies.get('session_id');
-  const success = searchParams.get('payment_success');
+  const seats = parseInt(searchParams.get('seats'));
+  const ferryId = searchParams.get('ferryId');
+  const success = searchParams.get('success');
+  console.log("success===", success, "seats===", seats, "ferryId===", ferryId)
 
-  // Do something with the query params (e.g. display a success message)
-  // ...
-
-  // Truncate the query params from the URL
   const newPathname = location.pathname;
   window.history.replaceState(null, '', newPathname);
-
-  // const session_id = query.get('session_id');
-
-  // if (session_id) {
-  //   return (
-  //     <Elements stripe={stripePromise}>
-  //       <PaymentSuccess session={session_id} />
-  //     </Elements>
-  //   );
-  // }
-
-  if (window.location.pathname === '/payment-cancelled') {
-    return <PaymentCancelled />;
+  if (success === 'false') {
+    useEffect(() => {
+      axios.post(`${API_URI}/ferry/cancle/${ferryId}`, { seats: seats }).then((res) => {
+        console.log(res.data)
+      })
+    }, [success])
+    return (
+      <>
+        <Booking />
+      </>
+    );
   }
   else {
     return (
