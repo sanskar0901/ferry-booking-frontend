@@ -8,7 +8,7 @@ import { useLocation } from 'react-router-dom';
 import Cookies from 'js-cookie'
 
 
-const stripePromise = loadStripe('pk_test_51MwPq1SB27RQWA1pF86ZOljFE3IWwg5p5lN2ZltOna4T4MrVUsvNjWu61s1LtiQd7o7NmNbMYeggPYB1bqGYHZyc00Raj2RPlu');
+const stripePromise = loadStripe('pk_live_51LDybfBrOXvhxCejooWLbqdvYeSj2oVKWmdJwr6q1Jm1n7v95Pl0Z8BJRQrlsn6rpjWUUYqvHYcJaBiDSpMqkggq003FuZCrIj');
 import mapImg1 from '../../../assets/map1.svg'
 import mapImg2 from '../../../assets/map2.svg'
 import { API_URI } from '../../constants/apiUrl.constant';
