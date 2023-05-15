@@ -98,7 +98,7 @@ export const Booking = () => {
   };
 
   return (
-    <div className={classes.majorContainer}>
+    <div className={classes.majorContainer} id="book">
       {
         modal &&
         <div className={classes.modalMaj}>
