@@ -1,7 +1,7 @@
 import React from 'react'
 import classes from './footer.module.css'
 
-import img1 from '../../../assets/img1.svg'
+import img1 from '../../../assets/logoMain.svg'
 import icon1 from '../../../assets/locationIcon.png'
 import icon2 from '../../../assets/mailIcon.png'
 import icon3 from '../../../assets/phoneIcon.png'
