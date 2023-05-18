@@ -222,7 +222,7 @@ function PaymentSuccess(session, success) {
   const [data, setData] = useState({})
   const [qr, setQr] = useState("")
   useEffect(() => {
-    axios.get(`https://api.stripe.com/v1/checkout/sessions/${session.session}`, { headers: { Authorization: `Bearer sk_test_51MwPq1SB27RQWA1pGKmMCb8Zu6ZuLFi8aZ7yIa43bz7DP15Zqf1phUuNDen2nWOES4A4armJjS3uQqq2nVjuPkm900d4egNacl ` } })
+    axios.get(`https://api.stripe.com/v1/checkout/sessions/${session.session}`, { headers: { Authorization: `Bearer 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 ` } })
       .then(async (res) => {
         console.log("data===", res.data.metadata)
         setData(res.data.metadata)
