@@ -46,4 +46,10 @@
     .logo{
         height:45%;
     }
+    .majorContainer h3{
+        display: none;
+    }
+    .majorContainer{
+        justify-content: center;
+    }
 }

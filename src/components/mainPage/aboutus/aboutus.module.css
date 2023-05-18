@@ -1,96 +1,68 @@
 .majorContainer{
     width:100%;
-}
-.header{
-    width: 100%;
+    min-height:500px;
+    background-image: url("../../../assets/aboutUs.svg");
+    background-position: top;
+    background-size: cover;
+    background-repeat: no-repeat;
     display: flex;
-    flex-direction: row;
     align-items: center;
-    justify-content: center;
-    color: black;
+    justify-content: flex-end;
+    flex-direction: column;
 }
-.header p{
-    font-size: 45px;
+.content{
+    width:86%;
+    margin-top: 260px;
+    margin-bottom: 60px;
+}
+.content h1{
+    font-size: 38px;
     font-weight: 700;
-    color: #07567B;
-    margin:40px 0px;
+    text-align: center;
 }
-.main{
-    height:300px;
-    width:100%;
-    /* background-color: burlywood; */
+.content p{
+    font-size: 18px;
+    text-align: center;
 }
-
-.main img{
-    height: 100%;
-    display: inline-block;
+.content h2{
+    font-size: 22px;
+    font-weight: 700;
+    text-align: center;
 }
-
-.adjust{
-    display: inline-block;
-    width: calc(100% - 632.02px);
-    position: relative;
-    z-index: 10;
+.content h3{
+    font-size: 22px;
+    text-align: center;
 }
-
-.forBlur{
-    height:300px;
-    width: 100%;
-    background-color: rgba(222, 184, 135, 0.411);
-    margin-top: -297px;
-    position: relative;
-    z-index: 10;
-    background: linear-gradient(94deg, rgba(7,86,123,1) 54%, rgba(7,86,123,0.9122242647058824) 58%, rgba(7,86,123,0.09429709383753504) 100%);
-    padding: 42px 10%;
-
+.content ul{
+    width:80%;
+    margin: 0px auto;
+}
+.content ul li{
+    list-style-type:disc;
+    font-size: 18px;
 }
 
-.quote{
-    width: 48%;
-    font-size: 20px;
-    font-weight: 500;
-}
-.name{
-    font-size: 20px;
-    font-weight: 500;
-    margin-top: 40px;
-}
-.pos{
-    font-size: 17px;
-    font-weight: 300;
-}
-
-@media screen and (max-width:800px){
-    .header p{
-        font-size: 26px;
+@media screen and (max-width:715px){
+    .content{
+        width:95%;
     }
 
-    .adjust{
-        width:100%;
-        height:300px;
-        display: block;
-    }
-    .main{
-        height: 600px;
-    }
-    .main img{
-        display: block;
-        width:100%;
-        height:300px !important;
-        background-color: #5e85a2;
-    }
-    .forBlur{
-        height:500px;
-        width: 100%;
-        background-color: rgba(222, 184, 135, 0.411);
-        margin-top: -605px;
-        position: relative;
-        z-index: 10;
-        background: linear-gradient(180deg, rgba(7,86,123,1) 64%, rgba(7,86,123,0.9122242647058824) 68%, rgba(7,86,123,0.09429709383753504) 100%);
-        padding: 42px 10%;
-    }
-    .quote{
-        width:100%;
-        font-size: 16px;
-    }
+.content h1{
+    font-size: 28px;
+}
+.content p{
+    font-size: 14px;
+}
+.content h2{
+    font-size: 18px;
+}
+.content h3{
+    font-size: 18px;
+}
+.content ul{
+    width:90%;
+}
+.content ul li{
+    font-size: 14px;
+}
 }
