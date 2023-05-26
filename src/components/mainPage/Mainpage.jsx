@@ -10,8 +10,8 @@ function Mainpage() {
     <div>
         <Header/>
         <Intro/>
-        <Aboutus/>
         <BookingWrapper/>
+        <Aboutus/>
         <FooterTop/>
     </div>
   )
