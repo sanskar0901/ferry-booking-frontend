@@ -188,7 +188,7 @@ export const Booking = () => {
               setPrice(e.target.options[e.target.selectedIndex].getAttribute("data-price"));
               setCapacity(e.target.options[e.target.selectedIndex].getAttribute("data-capacity"));
               setFerryId(e.target.options[e.target.selectedIndex].getAttribute("data-ferryId"));
-            }} className=' grid grid-col-3 w-[2vw] px-1 py-2 leading-tight text-black placeholder:text-blue-400 focus:outline-none focus:shadow-outline hover:cursor-pointer bg-white'>
+            }} className={`grid grid-col-3 w-[2vw] px-1 py-2 leading-tight text-black placeholder:text-blue-400 focus:outline-none focus:shadow-outline hover:cursor-pointer bg-white ${classes.mblbtn}`}>
               <option value="">Select a time slot</option>
               {ferry.map((ferr, index) => (
                 <option className={`p-2 flex justify-between gap-5  ${ferr.capacity < 10 ? 'text-rose-700' : `${ferr.capacity < 20 ? 'text-yellow-400' : 'text-green-500'}`}`} key={index} value={ferr.time_slot} data-price={ferr.fare * travellers} data-ferryId={ferr._id}
