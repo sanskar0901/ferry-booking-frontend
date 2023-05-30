@@ -24,7 +24,7 @@ export const Booking = () => {
   const [time, setTime] = useState('00:00')
   const [availibility, setAvailibility] = useState('')
   const [capacity, setCapacity] = useState()
-  const [price, setPrice] = useState();
+  const [price, setPrice] = useState(0);
   const [ferryId, setFerryId] = useState();
   const [modal, setModal] = useState(false);
   const [ferry, setFerry] = useState([])
@@ -130,14 +130,15 @@ export const Booking = () => {
             <p>From</p>
             <select value={from} onChange={(e) => { setFrom(e.target.value) }}>
               <option value="">Select starting point</option>
-              <option value="Starting point 1">Starting point 1</option>
-              <option value="Starting point 2">Starting point 2</option>
-              <option value="Starting point 3">Starting point 3</option>
+              <option value="DocksDrivingRange Water Taxi">DocksDrivingRange Water Taxi</option>
+              <option value="Ward's Island">Ward's Island</option>
+              {/* <option value="Starting point 2">Starting point 2</option>
+              <option value="Starting point 3">Starting point 3</option> */}
             </select>
           </div>
         </div>
         <div className={classes.dateP}>
-          <p><p style={{ fontSize: 34, fontWeight: 600, display: 'inline-block' }}>46</p>mins</p>
+          <p><p style={{ fontSize: 34, fontWeight: 600, display: 'inline-block' }}>15</p>mins</p>
           <p style={{ fontSize: 12 }}>Estimated Time</p>
         </div>
         <div className={classes.dest}>
@@ -146,9 +147,11 @@ export const Booking = () => {
             <p>To</p>
             <select value={to} onChange={(e) => { setTo(e.target.value) }}>
               <option value="">Select destination</option>
-              <option value="Destination 1">Destination 1</option>
-              <option value="Destination 2">Destination 2</option>
-              <option value="Destination 3">Destination 3</option>
+              <option value="DocksDrivingRange Water Taxi">DocksDrivingRange Water Taxi</option>
+              <option value="Ward's Island">Ward's Island</option>
+
+              {/* <option value="Destination 2">Destination 2</option>
+              <option value="Destination 3">Destination 3</option> */}
             </select>
           </div>
         </div>
@@ -203,7 +206,7 @@ export const Booking = () => {
         </div>
 
         <div className={classes.inpCtn}>
-          <p><b>Total:</b> <p style={{ fontSize: 28, fontWeight: 600, display: 'inline-block', color: '#19CC56' }}>{price} USD</p></p>
+          <p><b>Total:</b> <p style={{ fontSize: 28, fontWeight: 600, display: 'inline-block', color: '#19CC56' }}>{price} CDN</p></p>
 
         </div>
       </div>
