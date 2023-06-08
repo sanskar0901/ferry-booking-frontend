@@ -10,7 +10,7 @@ import { GrLocation, GrMailOption, GrPhone } from 'react-icons/gr'
 
 export const FooterTop = () => {
     return (
-        <div className={classes.majorContainer}>
+        <div className={`${classes.majorContainer} head_print`}>
             <div className={classes.main}>
                 <div className={classes.L}>
                     <img src={img1} />

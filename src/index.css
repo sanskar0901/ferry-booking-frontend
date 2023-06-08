@@ -84,3 +84,14 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+
+
+@media print {
+  body{
+    height:100vh;
+  }
+  .head_print {
+      visibility: hidden !important;
+  }
+}

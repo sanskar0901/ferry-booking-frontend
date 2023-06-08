@@ -4,7 +4,7 @@ import logo from "../../../assets/logoMain.svg"
 
 export const Header = () => {
     return (
-        <div className={classes.majorContainer}>
+        <div className={`${classes.majorContainer} head_print`}>
             <img src={logo} className={classes.logo} />
             <h3>
                 The Otter Guy

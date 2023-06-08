@@ -5,7 +5,7 @@ import img3 from '../../../assets/img3.svg'
 
 export const Aboutus = () => {
     return (
-        <div className={classes.majorContainer} id="about">
+        <div className={`${classes.majorContainer} head_print`} id="about">
             <div className={classes.content}>
                 <h1>ABOUT THE SERVICE</h1>
                 <br/>
