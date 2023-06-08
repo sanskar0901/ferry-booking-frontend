@@ -8,7 +8,7 @@ export const Intro = () => {
         <div className={`${classes.majorContainer} head_print`}>
             <img src={logo} className={classes.logo}/>
             <div>
-                <a>Book Now</a>
+                <a href="#book">Book Now</a>
                 <a>Learn More</a>
             </div>
         </div>

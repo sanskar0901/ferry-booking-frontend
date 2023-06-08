@@ -22,12 +22,12 @@
     cursor: pointer;
 }
 .logo{
-    height:25%;
+    height:22%;
 }
 
 @media screen and (max-width:600px){
     .logo{
-        width:90%;
+        width:80%;
         height: auto;
     }
     .majorContainer div a{

@@ -215,7 +215,9 @@
 }
 
 @media screen and (max-width:800px){
-
+.mblbtn{
+    width: 7vw !important;
+}
     .box{
         width:95%;
     }

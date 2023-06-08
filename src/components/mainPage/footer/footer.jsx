@@ -19,19 +19,21 @@ export const FooterTop = () => {
                 <div className={classes.R}>
                     <ul>
                         <li>
-                            <img src={icon1} /> <a>8502  Preston Rd. South West Gate Toronto, Canada 237884</a>
+                            <img src={icon1} /> <a>The Otter Guy Inc.
+                                The Docks Driving Range, 176 Cherry St,
+                                Toronto, ON M5A 3L2</a>
                         </li>
                         <li>
-                            <img src={icon2} /> <a href="mailto:testing123@yahoo.com">testing123@yahoo.com</a>
+                            <img src={icon2} /> <a href="mailto:theotterguy@yahoo.com">theotterguy@yahoo.com</a>
                         </li>
                         <li>
-                            <img src={icon3} /> <a href="tel:+912934569483">+91 29345 69483</a>
+                            <img src={icon3} /> <a href="tel:+1-416-995-6809">+1-416-995-6809</a>
                         </li>
                     </ul>
                 </div>
             </div>
             <div className={classes.cr}>
-                <p>© Copyright 2023, All Rights Reserved</p>
+                <p>The Otter Guy Inc. © Copyright 2023, All Rights Reserved</p>
             </div>
         </div>
     )
