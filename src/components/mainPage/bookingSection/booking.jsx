@@ -169,7 +169,7 @@ export const Booking = () => {
         </div>
         <div className={classes.inpCtn}>
           <div className='flex'><DatePicker
-            className=' grid grid-col-3 w-[15vw] px-1 py-0 leading-tight text-blue-700 placeholder:text-[#07567B] focus:outline-none focus:shadow-outline hover:cursor-pointer bg-white'
+            className=' grid grid-col-3 w-fit px-1 py-0 leading-tight text-blue-700 placeholder:text-[#07567B] focus:outline-none focus:shadow-outline hover:cursor-pointer bg-white'
             onChange={(date) => { setDate(date) }}
             dateFormat="dd-MM-yyyy"
             placeholderText={"Departure Date ⬇"}
@@ -301,16 +301,26 @@ function BookingWrapper() {
       <>
         {
           session_id && modal &&
-          <div className={classes.modalMaj}>
+          <div className={classes.modalMaj} id="section-to-print">
             <div className={classes.modalBackdrop} onClick={() => setModal(false)}></div>
             <div className={classes.box}>
               <Elements stripe={stripePromise}>
                 <PaymentSuccess session={session_id} />
               </Elements>
+              <button className={classes.button} onClick={()=>window.print()}>Download</button>
             </div>
           </div>
 
         }
+        {/* <div className={classes.modalMaj} id="section-to-print">
+            <div className={classes.modalBackdrop} onClick={() => setModal(false)}></div>
+            <div className={classes.box}>
+              <Elements stripe={stripePromise}>
+                <PaymentSuccess session={session_id} />
+              </Elements>
+              <button className={classes.button} onClick={()=>window.print()}>Download</button>
+            </div>
+          </div> */}
         <Booking />
       </>
     );
