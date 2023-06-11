@@ -11,7 +11,7 @@
     margin-right: -200px;
     font-weight: 600;
     font-size: 24px;
-    color:#FFE500
+    color:#FFC60B
 }
 .logo{
     height:85%;
@@ -30,7 +30,7 @@
     display: block;
 }
 .list li button{
-    background-color: #FFE500;
+    background-color: #FFC60B;
     color:#07567B;
     font-size: 1.1rem;
     font-weight: 300;

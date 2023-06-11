@@ -129,7 +129,7 @@ export const Booking = () => {
           <div className={classes.cover}>
             <p>From</p>
             <select value={from} onChange={(e) => { setFrom(e.target.value) }}>
-              <option value="">Select starting point</option>
+              {/* <option value="">Select starting point</option> */}
               <option value="DocksDrivingRange Water Taxi">DocksDrivingRange Water Taxi</option>
               <option value="Ward's Island">Ward's Island</option>
               {/* <option value="Starting point 2">Starting point 2</option>
@@ -146,9 +146,9 @@ export const Booking = () => {
           <div className={classes.cover}>
             <p>To</p>
             <select value={to} onChange={(e) => { setTo(e.target.value) }}>
-              <option value="">Select destination</option>
-              <option value="DocksDrivingRange Water Taxi">DocksDrivingRange Water Taxi</option>
+              {/* <option value="">Select destination</option> */}
               <option value="Ward's Island">Ward's Island</option>
+              <option value="DocksDrivingRange Water Taxi">DocksDrivingRange Water Taxi</option>
 
               {/* <option value="Destination 2">Destination 2</option>
               <option value="Destination 3">Destination 3</option> */}
