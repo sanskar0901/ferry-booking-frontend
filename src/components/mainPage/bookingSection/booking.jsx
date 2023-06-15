@@ -85,6 +85,7 @@ export const Booking = () => {
         console.log(res.data)
         const sessionId = await res.data.sessionId;
         console.log(sessionId)
+        axios.post(`${API_URI}/booking/time-exceed/${res.data.bookingId}`)
         const stripe = await stripePromise;
         await stripe.redirectToCheckout({ sessionId }).then(async (response) => {
           console.log(response.data)
@@ -307,7 +308,7 @@ function BookingWrapper() {
               <Elements stripe={stripePromise}>
                 <PaymentSuccess session={session_id} />
               </Elements>
-              <button className={classes.button} onClick={()=>window.print()}>Download</button>
+              <button className={classes.button} onClick={() => window.print()}>Download</button>
             </div>
           </div>
 
