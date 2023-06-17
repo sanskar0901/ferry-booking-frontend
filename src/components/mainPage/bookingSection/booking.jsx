@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import classes from './booking.module.css'
 import DatePicker from 'react-datepicker';
 import axios from 'axios'
@@ -15,6 +15,10 @@ import { API_URI } from '../../constants/apiUrl.constant';
 
 
 export const Booking = () => {
+
+  const dateRef = useRef(null)
+  const departureTimeRef = useRef(null)
+
   const [travellers, setTravellers] = useState(1)
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
@@ -28,6 +32,14 @@ export const Booking = () => {
   const [ferryId, setFerryId] = useState();
   const [modal, setModal] = useState(false);
   const [ferry, setFerry] = useState([])
+
+  const datePickerCtn = ()=>{
+    dateRef.current.handleFocus()
+  }
+
+  const departurePickerCtn = ()=>{
+    departureTimeRef.current.click()
+  }
 
 
   const handleSearch = () => {
@@ -163,24 +175,25 @@ export const Booking = () => {
           <div className={classes.inp}>
             <p><p style={{ fontSize: 34, fontWeight: 600, display: 'inline-block' }}>{travellers}</p>Travellers</p>
             <div>
-              <button style={{ borderRight: "1px solid #BEBEBE" }} onClick={() => travellers !== 1 && setTravellers(travellers - 1)}>-</button>
-              <button onClick={() => setTravellers(travellers + 1)}>+</button>
+              <button style={{ fontSize:'40px', lineHeight:'40px', borderRight: "1px solid #BEBEBE" }} onClick={() => travellers !== 1 && setTravellers(travellers - 1)}>-</button>
+              <button style={{ fontSize:'35px', lineHeight:'40px'}}onClick={() => setTravellers(travellers + 1)}>+</button>
             </div>
           </div>
         </div>
-        <div className={classes.inpCtn}>
-          <div className='flex'><DatePicker
+        <div className={classes.inpCtn} onClick={datePickerCtn}>
+          <DatePicker
             className=' grid grid-col-3 w-fit px-1 py-0 leading-tight text-blue-700 placeholder:text-[#07567B] focus:outline-none focus:shadow-outline hover:cursor-pointer bg-white'
             onChange={(date) => { setDate(date) }}
             dateFormat="dd-MM-yyyy"
             placeholderText={"Departure Date ⬇"}
             required
-          /></div>
+            ref={dateRef}
+          />
           <p className='flex items-end'>
             <p style={{ fontSize: 28, fontWeight: 600, display: 'inline-block' }}>{date.toLocaleString('en-us', { day: 'numeric' })}</p><p>{date.toLocaleString('en-us', { month: 'long' })}'{date.toLocaleString('en-us', { year: 'numeric' })}</p>
           </p>
         </div>
-        <div className={classes.inpCtn}>
+        <div className={classes.inpCtn} onClick={departurePickerCtn}>
           <p>Departure Time</p>
           <div className={classes.inp}>
             <p style={{ fontSize: 34, fontWeight: 600, display: 'inline-block' }}>{time}</p>
@@ -189,7 +202,7 @@ export const Booking = () => {
               setPrice(e.target.options[e.target.selectedIndex].getAttribute("data-price"));
               setCapacity(e.target.options[e.target.selectedIndex].getAttribute("data-capacity"));
               setFerryId(e.target.options[e.target.selectedIndex].getAttribute("data-ferryId"));
-            }} className={`grid grid-col-3 w-[2vw] px-1 py-2 leading-tight text-black placeholder:text-blue-400 focus:outline-none focus:shadow-outline hover:cursor-pointer bg-white ${classes.mblbtn}`}>
+            }} className={`grid grid-col-3 w-[2vw] px-1 py-2 leading-tight text-black placeholder:text-blue-400 focus:outline-none focus:shadow-outline hover:cursor-pointer bg-white ${classes.mblbtn}`} ref={departureTimeRef}>
               <option value="">Select a time slot</option>
               {ferry.map((ferr, index) => (
                 <option className={`p-2 flex justify-between gap-5  ${ferr.capacity < 10 ? 'text-rose-700' : `${ferr.capacity < 20 ? 'text-yellow-400' : 'text-green-500'}`}`} key={index} value={ferr.time_slot} data-price={ferr.fare * travellers} data-ferryId={ferr._id}
