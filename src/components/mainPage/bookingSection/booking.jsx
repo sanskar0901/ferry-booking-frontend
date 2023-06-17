@@ -25,7 +25,7 @@ export const Booking = () => {
   const [date, setDate] = useState(new Date())
   const [from, setFrom] = useState('DocksDrivingRange Water Taxi')
   const [to, setTo] = useState(`Ward's Island`)
-  const [time, setTime] = useState('00:00')
+  const [time, setTime] = useState('0:00')
   const [availibility, setAvailibility] = useState('')
   const [capacity, setCapacity] = useState()
   const [price, setPrice] = useState(0);
@@ -33,11 +33,11 @@ export const Booking = () => {
   const [modal, setModal] = useState(false);
   const [ferry, setFerry] = useState([])
 
-  const datePickerCtn = ()=>{
+  const datePickerCtn = () => {
     dateRef.current.handleFocus()
   }
 
-  const departurePickerCtn = ()=>{
+  const departurePickerCtn = () => {
     departureTimeRef.current.click()
   }
 
@@ -79,9 +79,22 @@ export const Booking = () => {
         });
     }
   }, [location.search]);
-
+  //email regex 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if (!name || !email) {
+      window.alert('Please Fill All The Fields')
+      return
+    }
+    else if (!re.test(email)) {
+      window.alert('Please Enter Valid Email')
+      return
+    }
+    else if (!time || !date || time === '0:00') {
+      window.alert('Please Select Date And Time')
+      return
+    }
     window.alert('You Will Get Only 5 Min To Complete Your Payment')
     console.log('Submit')
 
@@ -175,8 +188,8 @@ export const Booking = () => {
           <div className={classes.inp}>
             <p><p style={{ fontSize: 34, fontWeight: 600, display: 'inline-block' }}>{travellers}</p>Travellers</p>
             <div>
-              <button style={{ fontSize:'40px', lineHeight:'40px', borderRight: "1px solid #BEBEBE" }} onClick={() => travellers !== 1 && setTravellers(travellers - 1)}>-</button>
-              <button style={{ fontSize:'35px', lineHeight:'40px'}}onClick={() => setTravellers(travellers + 1)}>+</button>
+              <button style={{ fontSize: '40px', lineHeight: '40px', borderRight: "1px solid #BEBEBE" }} onClick={() => travellers !== 1 && setTravellers(travellers - 1)}>-</button>
+              <button style={{ fontSize: '35px', lineHeight: '40px' }} onClick={() => setTravellers(travellers + 1)}>+</button>
             </div>
           </div>
         </div>
@@ -193,6 +206,13 @@ export const Booking = () => {
             <p style={{ fontSize: 28, fontWeight: 600, display: 'inline-block' }}>{date.toLocaleString('en-us', { day: 'numeric' })}</p><p>{date.toLocaleString('en-us', { month: 'long' })}'{date.toLocaleString('en-us', { year: 'numeric' })}</p>
           </p>
         </div>
+
+
+        <button className={classes.button} onClick={(e) => { e.preventDefault(); handleSearch() }}>Check Availability</button>
+
+
+
+
         <div className={classes.inpCtn} onClick={departurePickerCtn}>
           <p>Departure Time</p>
           <div className={classes.inp}>
@@ -215,22 +235,14 @@ export const Booking = () => {
         </div>
         <div className={classes.inpCtn}>
           <p>Availability: <p style={{ fontSize: 28, fontWeight: 600, display: 'inline-block', color: `${availibility == 'Yes' ? '#19CC56' : '#B90E0A'}` }}>{availibility}</p></p>
-          <p>Seats: <p style={{ fontSize: 28, fontWeight: 600, display: 'inline-block', color: '#07567B' }}>{capacity}</p></p>
+          <p><b>Total:</b> <p style={{ fontSize: 28, fontWeight: 600, display: 'inline-block', color: '#19CC56' }}>{price} $CDN</p></p>
 
         </div>
-
-        <div className={classes.inpCtn}>
-          <p><b>Total:</b> <p style={{ fontSize: 28, fontWeight: 600, display: 'inline-block', color: '#19CC56' }}>{price} CDN</p></p>
-
-        </div>
-      </div>
-      <center>
-        <button className={classes.button} onClick={(e) => { e.preventDefault(); handleSearch() }}>Check Availability</button>
-
-      </center>
-      <center>
         <button className={classes.button} onClick={(e) => { setModal(true) }} disabled={travellers > capacity && ferryId == "" && time == "" && date == ""}>Book Now</button>
-      </center>
+      </div>
+
+
+
     </div >
   )
 }
@@ -267,7 +279,6 @@ function PaymentSuccess(session, success) {
           <b>Time:</b> {data.time}<br></br>
           <b>Name:</b> {data.name}<br></br>
           <b>Ferry No.:</b> {data.ferryNo}<br></br>
-
           <br></br>
           <b>No. of seats:</b> {data.seats}<br></br>
           <br></br>

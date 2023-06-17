@@ -6,8 +6,6 @@ import icon1 from '../../../assets/locationIcon.png'
 import icon2 from '../../../assets/mailIcon.png'
 import icon3 from '../../../assets/phoneIcon.png'
 
-import { GrLocation, GrMailOption, GrPhone } from 'react-icons/gr'
-
 export const FooterTop = () => {
     return (
         <div className={`${classes.majorContainer} head_print`}>
@@ -24,7 +22,7 @@ export const FooterTop = () => {
                                 Toronto, ON M5A 3L2</a>
                         </li>
                         <li>
-                            <img src={icon2} /> <a href="mailto:theotterguy@yahoo.com">theotterguy@yahoo.com</a>
+                            <img src={icon2} /> <a href="mailto:info@otterguy.com">info@otterguy.com</a>
                         </li>
                         <li>
                             <img src={icon3} /> <a href="tel:+1-416-995-6809">+1-416-995-6809</a>

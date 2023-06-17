@@ -7,8 +7,11 @@ export const Intro = () => {
     return (
         <div className={`${classes.majorContainer} head_print`}>
             <div className='flex flex-col items-center justify-center gap-4'>
+                <div>
+                    <p className='text-[#FFC60B] text-[23px] font-bold text-center w-[100vw] md:text-[32px] md:w-[65vw]'>Reserve your Water </p>
+                    <p className='text-[#FFC60B] text-[23px] font-bold text-center w-[100vw] md:text-[32px] md:w-[65vw]'> Taxi to Toronto Island</p>
+                </div>
                 <img src={logo} className={classes.logo} />
-                <p className='text-[#FFC60B] text-[16px] font-bold text-center w-[100vw] md:text-[28px] md:w-[65vw]'>Reservable water taxi to Toronto Island</p>
 
             </div>
             <div>
