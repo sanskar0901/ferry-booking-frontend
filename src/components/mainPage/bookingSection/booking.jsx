@@ -145,7 +145,7 @@ export const Booking = () => {
               <p>{price}</p>
               <h4>Enter Name</h4>
               <input type="text" onChange={(e) => setName(e.target.value)}></input>
-              <h4>Enter Enail</h4>
+              <h4>Enter Email</h4>
               <input type="text" onChange={(e) => setEmail(e.target.value)}></input>
             </div>
             <button className={classes.button1} onClick={(e) => { handleSubmit(e) }} disabled={travellers > capacity}>Book Now</button>
