@@ -282,13 +282,13 @@ function PaymentSuccess({ session, success, setModal }) {
         <img src={logo} alt="logo" />
         <h1 className='text-black' style={{ fontSize: 30 }}>Payment Success</h1>
         <p className='text-black'>
-          <b>Date:</b> {new Date(data.date).getDate() + "/" + (new Date(data.date).getMonth() + 1) + "/" + new Date(data.date).getFullYear()}<br></br>
           <br></br>
           <div className='flex flex-col gap-4 items-start justify-center '>
-            <b>From:</b> {data.from}
-            <b>To:</b> {data.to}
-            <b>Time:</b> {data.time}
-            <b>Name:</b> {data.name}
+            <p><b>From:</b> {data.from}</p>
+            <p><b>To:</b> {data.to}</p>
+            <p className='text-[20px]'><b>Date: {new Date(data.date).getDate() + "/" + (new Date(data.date).getMonth() + 1) + "/" + new Date(data.date).getFullYear()}</b></p>
+            <p className='text-[20px]'><b>Time:{data.time}</b> </p>
+            <p><b>Name:</b> {data.name}</p>
           </div>
           <br />
           <div className='flex gap-2 items-center justify-center'>
