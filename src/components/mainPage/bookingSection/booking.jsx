@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, createRef } from 'react'
 import classes from './booking.module.css'
 import DatePicker from 'react-datepicker';
 import axios from 'axios'
@@ -6,17 +6,15 @@ import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import { useLocation } from 'react-router-dom';
 import Cookies from 'js-cookie'
-
-
+import { useScreenshot, createFileName } from 'use-react-screenshot'
+import logo from '../../../assets/logoMain.svg'
+import { AiOutlineCloseCircle } from 'react-icons/ai'
 const stripePromise = loadStripe('pk_live_51LDybfBrOXvhxCejooWLbqdvYeSj2oVKWmdJwr6q1Jm1n7v95Pl0Z8BJRQrlsn6rpjWUUYqvHYcJaBiDSpMqkggq003FuZCrIj');
 import mapImg1 from '../../../assets/map1.svg'
 import mapImg2 from '../../../assets/map2.svg'
 import { API_URI } from '../../constants/apiUrl.constant';
 
-
 export const Booking = () => {
-
-
   const departureTimeRef = useRef(null)
   const [isOpen, setIsOpen] = useState(false);
   const [travellers, setTravellers] = useState(1)
@@ -244,7 +242,23 @@ export const Booking = () => {
     </div >
   )
 }
-function PaymentSuccess(session, success) {
+function PaymentSuccess({ session, success, setModal }) {
+
+  const ref = createRef(null);
+  const [image, takeScreenShot] = useScreenshot({
+    type: "image/jpeg",
+    quality: 1.0
+  });
+
+  const download = (image, { name = "e-ticket", extension = "jpg" } = {}) => {
+    const a = document.createElement("a");
+    a.href = image;
+    a.download = createFileName(extension, name);
+    a.click();
+  };
+
+  const downloadScreenshot = () => takeScreenShot(ref.current).then(download);
+
   // console.log("session=", session);
   const [data, setData] = useState({})
   const [qr, setQr] = useState("")
@@ -262,28 +276,32 @@ function PaymentSuccess(session, success) {
       })
   }, [session])
   return (
-    <>
-      <center>
-
+    <div className='flex flex-col items-center h-[100vh]'>
+      <AiOutlineCloseCircle className='text-3xl absolute right-0 cursor-pointer' onClick={() => setModal(false)} />
+      <center ref={ref} className='p-4'>
+        <img src={logo} alt="logo" />
         <h1 className='text-black' style={{ fontSize: 30 }}>Payment Success</h1>
         <p className='text-black'>
           <b>Date:</b> {new Date(data.date).getDate() + "/" + (new Date(data.date).getMonth() + 1) + "/" + new Date(data.date).getFullYear()}<br></br>
           <br></br>
-          <div className='flex gap-2'>
+          <div className='flex flex-col gap-4 items-start justify-center '>
             <b>From:</b> {data.from}
             <b>To:</b> {data.to}
+            <b>Time:</b> {data.time}
+            <b>Name:</b> {data.name}
+          </div>
+          <br />
+          <div className='flex gap-2 items-center justify-center'>
+            <b>Ferry No.:</b> {data.ferryNo}
+            <b>No. of seats:</b> {data.seats}
           </div>
           <br></br>
-          <b>Time:</b> {data.time}<br></br>
-          <b>Name:</b> {data.name}<br></br>
-          <b>Ferry No.:</b> {data.ferryNo}<br></br>
-          <br></br>
-          <b>No. of seats:</b> {data.seats}<br></br>
-          <br></br>
-          <img src={`data:image/png;base64,${qr}`} alt="qr" />
+          <img src={`data:image/png;base64,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`} alt="qr" />
         </p >
       </center>
-    </>
+      <button className={classes.button} onClick={downloadScreenshot}>Download</button>
+
+    </div>
   );
 
 }
@@ -328,9 +346,9 @@ function BookingWrapper() {
             <div className={classes.modalBackdrop} onClick={() => setModal(false)}></div>
             <div className={classes.box}>
               <Elements stripe={stripePromise}>
-                <PaymentSuccess session={session_id} />
+                <PaymentSuccess session={session_id} setModal={setModal} />
               </Elements>
-              <button className={classes.button} onClick={() => window.print()}>Download</button>
+              {/* <button className={classes.button} onClick={() => window.print()}>Download</button> */}
             </div>
           </div>
 
