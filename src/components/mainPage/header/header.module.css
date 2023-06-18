@@ -40,11 +40,12 @@
 }
 
 @media screen and (max-width:800px){
-    .opt{
+    /* .opt{
         display:none !important;
-    }
+    } */
     .logo{
         height:75%;
+        display: none !important;
     }
     .majorContainer h3{
         display: none;

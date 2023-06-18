@@ -10,7 +10,7 @@ export const Header = () => {
                 The Otter Guy
             </h3>
             <ul className={classes.list} >
-                <li className={classes.opt}><a href="#footer">Charters Contact</a></li>
+                <li className={classes.opt}><a href="#footer">Contact And Charters</a></li>
                 {/* <li className={classes.opt}><a href="#book">Destinations</a></li>
                 <li className={classes.opt}><a href="#book">Calendar</a></li> */}
             </ul>

@@ -2,14 +2,16 @@ import React from 'react'
 import classes from './intro.module.css'
 
 import logo from '../../../assets/img1.svg'
+import logo1 from "../../../assets/logoMain.svg"
 
 export const Intro = () => {
     return (
         <div className={`${classes.majorContainer} head_print`}>
-            <div className='flex flex-col items-center justify-center gap-4'>
-                <div>
-                    <p className='text-[#FFC60B] text-[23px] font-bold text-center w-[100vw] md:text-[32px] md:w-[65vw]'>Reserve your Water </p>
-                    <p className='text-[#FFC60B] text-[23px] font-bold text-center w-[100vw] md:text-[32px] md:w-[65vw]'> Taxi to Toronto Island</p>
+            <div className='flex flex-col items-center justify-center md:gap-44 gap-44'>
+                <div className='flex flex-col items-center justify-center'>
+                    <img src={logo1} className='md:w-[8vw] md:hidden w-[20vw]' />
+                    <p className='text-[#FFC60B] text-[25px] font-bold text-center w-[100vw] md:text-[34px] md:w-[65vw]'>Reserve your Water </p>
+                    <p className='text-[#FFC60B] text-[25px] font-bold text-center w-[100vw] md:text-[34px] md:w-[65vw]'> Taxi to Toronto Island</p>
                 </div>
                 <img src={logo} className={classes.logo} />
 

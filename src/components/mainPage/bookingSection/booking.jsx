@@ -16,9 +16,9 @@ import { API_URI } from '../../constants/apiUrl.constant';
 
 export const Booking = () => {
 
-  const dateRef = useRef(null)
-  const departureTimeRef = useRef(null)
 
+  const departureTimeRef = useRef(null)
+  const [isOpen, setIsOpen] = useState(false);
   const [travellers, setTravellers] = useState(1)
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
@@ -34,13 +34,17 @@ export const Booking = () => {
   const [ferry, setFerry] = useState([])
 
   const datePickerCtn = () => {
-    dateRef.current.handleFocus()
-  }
+    setIsOpen(!isOpen);
+  };
 
   const departurePickerCtn = () => {
     departureTimeRef.current.click()
   }
 
+  const handleDateChange = (date) => {
+    setIsOpen(false); // Close the date picker
+    setDate(date);
+  };
 
   const handleSearch = () => {
     const data = {
@@ -195,24 +199,18 @@ export const Booking = () => {
         </div>
         <div className={classes.inpCtn} onClick={datePickerCtn}>
           <DatePicker
-            className=' grid grid-col-3 w-fit px-1 py-0 leading-tight text-blue-700 placeholder:text-[#07567B] focus:outline-none focus:shadow-outline hover:cursor-pointer bg-white'
-            onChange={(date) => { setDate(date) }}
+            className="grid grid-col-3 w-fit px-1 py-0 leading-tight text-blue-700 placeholder:text-[#07567B] focus:outline-none focus:shadow-outline hover:cursor-pointer bg-white"
+            onChange={handleDateChange}
             dateFormat="dd-MM-yyyy"
-            placeholderText={"Departure Date ⬇"}
+            placeholderText="Departure Date ⬇"
             required
-            ref={dateRef}
+            open={isOpen}
           />
           <p className='flex items-end'>
             <p style={{ fontSize: 28, fontWeight: 600, display: 'inline-block' }}>{date.toLocaleString('en-us', { day: 'numeric' })}</p><p>{date.toLocaleString('en-us', { month: 'long' })}'{date.toLocaleString('en-us', { year: 'numeric' })}</p>
           </p>
         </div>
-
-
         <button className={classes.button} onClick={(e) => { e.preventDefault(); handleSearch() }}>Check Availability</button>
-
-
-
-
         <div className={classes.inpCtn} onClick={departurePickerCtn}>
           <p>Departure Time</p>
           <div className={classes.inp}>
@@ -234,8 +232,8 @@ export const Booking = () => {
           </div>
         </div>
         <div className={classes.inpCtn}>
-          <p>Availability: <p style={{ fontSize: 28, fontWeight: 600, display: 'inline-block', color: `${availibility == 'Yes' ? '#19CC56' : '#B90E0A'}` }}>{availibility}</p></p>
-          <p><b>Total:</b> <p style={{ fontSize: 28, fontWeight: 600, display: 'inline-block', color: '#19CC56' }}>{price} $CDN</p></p>
+          <p><b>Availability:</b> <p style={{ fontSize: 24, fontWeight: 500, display: 'inline-block', color: `${availibility == 'Yes' ? '#19CC56' : '#B90E0A'}` }}>{availibility}</p></p>
+          <p><b>Total:</b> <p style={{ fontSize: 20, fontWeight: 400, display: 'inline-block' }}>{price} $CDN</p></p>
 
         </div>
         <button className={classes.button} onClick={(e) => { setModal(true) }} disabled={travellers > capacity && ferryId == "" && time == "" && date == ""}>Book Now</button>

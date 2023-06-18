@@ -8,7 +8,7 @@ import icon3 from '../../../assets/phoneIcon.png'
 
 export const FooterTop = () => {
     return (
-        <div className={`${classes.majorContainer} head_print`}>
+        <div className={`${classes.majorContainer} head_print`} id="footer">
             <div className={classes.main}>
                 <div className={classes.L}>
                     <img src={img1} />
