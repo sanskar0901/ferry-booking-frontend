@@ -53,7 +53,6 @@ export const Booking = () => {
     axios.post(`${API_URI}/ferry/searchFerry`, data).then(res => {
       console.log(res.data)
       if (!res.data.success) {
-        alert(res.data.message)
         setAvailibility(res.data.alertmsg)
       }
       else {
