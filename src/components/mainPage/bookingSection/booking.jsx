@@ -42,6 +42,12 @@ export const Booking = () => {
 
 
   const handleSearch = () => {
+
+
+  }
+  const handleDateChange = (date) => {
+    setIsOpen(false); // Close the date picker
+    setDate(date);
     const data = {
       to,
       from,
@@ -54,6 +60,7 @@ export const Booking = () => {
       console.log(res.data)
       if (!res.data.success) {
         setAvailibility(res.data.alertmsg)
+        alert("No ferry available")
       }
       else {
         setFerry(res.data.ferry)
@@ -61,12 +68,6 @@ export const Booking = () => {
         setAvailibility(res.data.alertmsg)
       }
     })
-
-  }
-  const handleDateChange = (date) => {
-    handleSearch()
-    setIsOpen(false); // Close the date picker
-    setDate(date);
   };
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
