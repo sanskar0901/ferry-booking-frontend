@@ -39,10 +39,7 @@ export const Booking = () => {
     departureTimeRef.current.click()
   }
 
-  const handleDateChange = (date) => {
-    setIsOpen(false); // Close the date picker
-    setDate(date);
-  };
+
 
   const handleSearch = () => {
     const data = {
@@ -67,6 +64,11 @@ export const Booking = () => {
     })
 
   }
+  const handleDateChange = (date) => {
+    handleSearch()
+    setIsOpen(false); // Close the date picker
+    setDate(date);
+  };
   useEffect(() => {
     const searchParams = new URLSearchParams(location.search);
     const session_id = searchParams.get('session_id');
@@ -177,22 +179,22 @@ export const Booking = () => {
               {/* <option value="">Select destination</option> */}
               <option value="Ward's Island">Ward's Island</option>
               <option value="DocksDrivingRange Water Taxi">DocksDrivingRange Water Taxi</option>
-
-              {/* <option value="Destination 2">Destination 2</option>
-              <option value="Destination 3">Destination 3</option> */}
             </select>
           </div>
         </div>
       </div>
       <div className={classes.inputField}>
-        <div className={classes.inpCtn}>
-          <p>Travellers Count</p>
-          <div className={classes.inp}>
-            <p><p style={{ fontSize: 34, fontWeight: 600, display: 'inline-block' }}>{travellers}</p>Travellers</p>
-            <div>
-              <button style={{ fontSize: '40px', lineHeight: '40px', borderRight: "1px solid #BEBEBE" }} onClick={() => travellers !== 1 && setTravellers(travellers - 1)}>-</button>
-              <button style={{ fontSize: '35px', lineHeight: '40px' }} onClick={() => setTravellers(travellers + 1)}>+</button>
+        <div className="flex border-[1px] border-[#BEBEBE]  items-center justify-between">
+          <div className='p-[10px]'>
+            <p>Travellers Count</p>
+            <div className={classes.inp}>
+              <p className='flex gap-3 items-end'><p style={{ fontSize: 34, fontWeight: 600 }}>{travellers}</p>Travellers</p>
             </div>
+
+          </div>
+          <div className='flex gap-1'>
+            <button style={{ fontSize: '44px', lineHeight: '40px', border: "1px solid #BEBEBE", color: "#000000", width: "4rem", height: "6rem" }} onClick={() => travellers !== 1 && setTravellers(travellers - 1)}>-</button>
+            <button style={{ fontSize: '44px', lineHeight: '40px', border: "1px solid #BEBEBE", color: "#000000", width: "4rem", height: "6rem" }} onClick={() => setTravellers(travellers + 1)}>+</button>
           </div>
         </div>
         <div className={classes.inpCtn} onClick={datePickerCtn}>
@@ -208,7 +210,7 @@ export const Booking = () => {
             <p style={{ fontSize: 28, fontWeight: 600, display: 'inline-block' }}>{date.toLocaleString('en-us', { day: 'numeric' })}</p><p>{date.toLocaleString('en-us', { month: 'long' })}'{date.toLocaleString('en-us', { year: 'numeric' })}</p>
           </p>
         </div>
-        <button className={classes.button} onClick={(e) => { e.preventDefault(); handleSearch() }}>Check Availability</button>
+        {/* <button className={classes.button} onClick={(e) => { e.preventDefault(); handleSearch() }}>Check Availability</button> */}
         <div className={classes.inpCtn} onClick={departurePickerCtn}>
           <p>Departure Time</p>
           <div className={classes.inp}>
