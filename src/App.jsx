@@ -7,12 +7,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import axios from 'axios'
 const stripePromise = loadStripe('pk_test_51MwPq1SB27RQWA1pF86ZOljFE3IWwg5p5lN2ZltOna4T4MrVUsvNjWu61s1LtiQd7o7NmNbMYeggPYB1bqGYHZyc00Raj2RPlu');
 
-import { Header } from './components/mainPage/header/header';
-import { Intro } from './components/mainPage/intro/intro';
-import { Aboutus } from './components/mainPage/aboutus/aboutus';
-import { FooterTop } from './components/mainPage/footer/footer';
-import BookingWrapper from './components/mainPage/bookingSection/booking';
-import {Adminpage} from './components/adminPage/Adminpage'
+
 import Mainpage from './components/mainPage/Mainpage';
 
 function App() {
@@ -45,12 +40,11 @@ function App() {
 
   return (
     <div>
-     <Router>
-      <Routes>
-        <Route path="/" element={<Mainpage/>}/>
-        <Route path="/admin" element={<Adminpage/>}/>
-      </Routes>
-     </Router>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Mainpage />} />
+        </Routes>
+      </Router>
       {/* <Adminpage/> */}
     </div>
   );

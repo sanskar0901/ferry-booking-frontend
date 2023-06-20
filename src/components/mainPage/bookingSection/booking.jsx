@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef, createRef } from 'react'
 import classes from './booking.module.css'
-import DatePicker from 'react-datepicker';
 import axios from 'axios'
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
@@ -13,6 +12,8 @@ const stripePromise = loadStripe('pk_live_51LDybfBrOXvhxCejooWLbqdvYeSj2oVKWmdJw
 import mapImg1 from '../../../assets/map1.svg'
 import mapImg2 from '../../../assets/map2.svg'
 import { API_URI } from '../../constants/apiUrl.constant';
+import Calendar from 'react-calendar';
+import 'react-calendar/dist/Calendar.css';
 
 export const Booking = () => {
   const departureTimeRef = useRef(null)
@@ -198,14 +199,17 @@ export const Booking = () => {
           </div>
         </div>
         <div className={classes.inpCtn} onClick={datePickerCtn}>
-          <DatePicker
-            className="grid grid-col-3 w-fit px-1 py-0 leading-tight text-blue-700 placeholder:text-[#07567B] focus:outline-none focus:shadow-outline hover:cursor-pointer bg-white"
-            onChange={handleDateChange}
-            dateFormat="dd-MM-yyyy"
-            placeholderText="Departure Date ⬇"
-            required
-            open={isOpen}
-          />
+          <p>Select Date</p>
+          {isOpen && (
+            <Calendar
+              onChange={handleDateChange}
+              value={date}
+              className={`absolute p-4 text-black ${classes.calendar}`}
+
+            // Additional props for customization
+            />
+          )}
+
           <p className='flex items-end'>
             <p style={{ fontSize: 28, fontWeight: 600, display: 'inline-block' }}>{date.toLocaleString('en-us', { day: 'numeric' })}</p><p>{date.toLocaleString('en-us', { month: 'long' })}'{date.toLocaleString('en-us', { year: 'numeric' })}</p>
           </p>

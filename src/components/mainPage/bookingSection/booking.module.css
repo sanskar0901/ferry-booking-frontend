@@ -21,6 +21,9 @@
     justify-content: center;
 }
 
+abbr {
+    color: #000 !important;
+}
 .map{
     margin:0px auto;
     width:800px;
@@ -218,6 +221,9 @@
 @media screen and (max-width:800px){
 .mblbtn{
     width: 7vw !important;
+}
+.calendar{
+    left:4px
 }
     .box{
         width:95%;
