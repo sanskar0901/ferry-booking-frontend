@@ -137,7 +137,7 @@ export const Booking = () => {
           <div className={classes.box}>
             <div className={classes.content}>
               <h4>Date</h4>
-              <p>{date.getDate()}</p>
+              <p>{new Date(date).getDate() + "/" + (new Date(date).getMonth() + 1) + "/" + new Date(date).getFullYear()}</p>
               <h4>Travellers</h4>
               <p>{travellers}</p>
               <h4>Time</h4>
@@ -265,11 +265,11 @@ function PaymentSuccess({ session, success, setModal }) {
 
   const downloadScreenshot = () => takeScreenShot(ref.current).then(download);
 
-  // console.log("session=", session);
+  console.log("session=", session);
   const [data, setData] = useState({})
   const [qr, setQr] = useState("")
   useEffect(() => {
-    axios.get(`https://api.stripe.com/v1/checkout/sessions/${session.session}`, { headers: { Authorization: `Bearer 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 ` } })
+    axios.get(`https://api.stripe.com/v1/checkout/sessions/${session}`, { headers: { Authorization: `Bearer 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 ` } })
       .then(async (res) => {
         console.log("data===", res.data.metadata)
         setData(res.data.metadata)
