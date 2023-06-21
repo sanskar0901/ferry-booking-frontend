@@ -143,7 +143,7 @@ export const Booking = () => {
               <h4>Time</h4>
               <p>{time}</p>
               <h4>Total Price</h4>
-              <p>{price}</p>
+              <p>{price * travellers}</p>
               <h4>Enter Name</h4>
               <input type="text" onChange={(e) => setName(e.target.value)}></input>
               <h4>Enter Email</h4>
@@ -227,7 +227,7 @@ export const Booking = () => {
             }} className={`grid grid-col-3 w-[2vw] px-1 py-2 leading-tight text-black placeholder:text-blue-400 focus:outline-none focus:shadow-outline hover:cursor-pointer bg-white ${classes.mblbtn}`} ref={departureTimeRef}>
               <option value="">Select a time slot</option>
               {ferry.map((ferr, index) => (
-                <option className={`p-2 flex justify-between gap-5  ${ferr.capacity < 10 ? 'text-rose-700' : `${ferr.capacity < 20 ? 'text-yellow-400' : 'text-green-500'}`}`} key={index} value={ferr.time_slot} data-price={ferr.fare * travellers} data-ferryId={ferr._id}
+                <option className={`p-2 flex justify-between gap-5  ${ferr.capacity < 10 ? 'text-rose-700' : `${ferr.capacity < 20 ? 'text-yellow-400' : 'text-green-500'}`}`} key={index} value={ferr.time_slot} data-price={ferr.fare} data-ferryId={ferr._id}
                   data-capacity={ferr.capacity}>
                   {ferr.time_slot}
                 </option>
@@ -237,7 +237,7 @@ export const Booking = () => {
         </div>
         <div className={classes.inpCtn}>
           <p><b>Availability:</b> <p style={{ fontSize: 24, fontWeight: 500, display: 'inline-block', color: `${availibility == 'Yes' ? '#19CC56' : '#B90E0A'}` }}>{availibility}</p></p>
-          <p><b>Total:</b> <p style={{ fontSize: 20, fontWeight: 400, display: 'inline-block' }}>{price} $CDN</p></p>
+          <p><b>Total:</b> <p style={{ fontSize: 20, fontWeight: 400, display: 'inline-block' }}>{price * travellers} $CDN</p></p>
 
         </div>
         <button className={classes.button} onClick={(e) => { setModal(true) }} disabled={travellers > capacity && ferryId == "" && time == "" && date == ""}>Book Now</button>
