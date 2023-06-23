@@ -1,7 +1,7 @@
 .majorContainer{
     width:100%;
     min-height:500px;
-    background-image: url("../../../assets/aboutUs.svg");
+    background-image: url("../../../assets/aboutUs.png");
     background-position: top;
     background-size: cover;
     background-repeat: no-repeat;
