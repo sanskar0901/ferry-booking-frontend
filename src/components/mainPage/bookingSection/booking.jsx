@@ -154,6 +154,9 @@ export const Booking = () => {
         </div>
 
       }
+      <div className='flex items-center justify-center'>
+        <a href='/directions' className='underline text-[18px] text-[#484eb5] font-[700]'>Location and Directions</a>
+      </div>
       <div className={classes.map}>
         <div className={classes.origin}>
           <img src={mapImg1} />
