@@ -1,10 +1,10 @@
 import React from 'react'
 import { Link } from 'react-scroll';
-import logo from "../../../assets/logoMain.svg"
-import cardir from "../../../assets/cardir.svg"
-import cycledir from "../../../assets/cycledir.svg"
-import bus202 from "../../../assets/bus202.svg"
-import bus72B from "../../../assets/bus72B.svg"
+import logo from "../../assets/logoMain.svg"
+import cardir from "../../assets/cardir.svg"
+import cycledir from "../../assets/cycledir.svg"
+import bus202 from "../../assets/bus202.svg"
+import bus72B from "../../assets/bus72B.svg"
 
 function Direction() {
     return (
