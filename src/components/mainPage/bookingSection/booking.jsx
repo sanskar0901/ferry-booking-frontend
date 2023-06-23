@@ -47,7 +47,7 @@ export const Booking = () => {
 
   }
   const handleDateChange = (date) => {
-    setIsOpen(false); // Close the date picker
+    setIsOpen(false);
     setDate(date);
     const data = {
       to,
@@ -163,11 +163,8 @@ export const Booking = () => {
           <div className={classes.cover}>
             <p>From</p>
             <select value={from} onChange={(e) => { setFrom(e.target.value) }}>
-              {/* <option value="">Select starting point</option> */}
               <option value="DocksDrivingRange Water Taxi">DocksDrivingRange Water Taxi</option>
               <option value="Ward's Island">Ward's Island</option>
-              {/* <option value="Starting point 2">Starting point 2</option>
-              <option value="Starting point 3">Starting point 3</option> */}
             </select>
           </div>
         </div>
@@ -180,7 +177,6 @@ export const Booking = () => {
           <div className={classes.cover}>
             <p>To</p>
             <select value={to} onChange={(e) => { setTo(e.target.value) }}>
-              {/* <option value="">Select destination</option> */}
               <option value="Ward's Island">Ward's Island</option>
               <option value="DocksDrivingRange Water Taxi">DocksDrivingRange Water Taxi</option>
             </select>
@@ -208,8 +204,6 @@ export const Booking = () => {
               onChange={handleDateChange}
               value={date}
               className={`absolute p-4 text-black ${classes.calendar}`}
-
-            // Additional props for customization
             />
           )}
 
@@ -217,7 +211,7 @@ export const Booking = () => {
             <p style={{ fontSize: 28, fontWeight: 600, display: 'inline-block' }}>{date.toLocaleString('en-us', { day: 'numeric' })}</p><p>{date.toLocaleString('en-us', { month: 'long' })}'{date.toLocaleString('en-us', { year: 'numeric' })}</p>
           </p>
         </div>
-        {/* <button className={classes.button} onClick={(e) => { e.preventDefault(); handleSearch() }}>Check Availability</button> */}
+
         <div className={classes.inpCtn} onClick={departurePickerCtn}>
           <p>Departure Time</p>
           <div className={classes.inp}>
@@ -278,7 +272,7 @@ function PaymentSuccess({ session, success, setModal }) {
         setData(res.data.metadata)
         console.log("data===", data)
         await axios.post(`${API_URI}/booking/bookingadd/${res.data.metadata.booking_id}`).then((res) => {
-          // console.log(res.data)
+
           setQr(res.data.url)
 
         })
@@ -313,9 +307,6 @@ function PaymentSuccess({ session, success, setModal }) {
 
 }
 
-function PaymentCancelled() {
-  return <h1>Payment Cancelled</h1>;
-}
 
 function BookingWrapper() {
   const location = useLocation();
@@ -355,20 +346,12 @@ function BookingWrapper() {
               <Elements stripe={stripePromise}>
                 <PaymentSuccess session={session_id} setModal={setModal} />
               </Elements>
-              {/* <button className={classes.button} onClick={() => window.print()}>Download</button> */}
+
             </div>
           </div>
 
         }
-        {/* <div className={classes.modalMaj} id="section-to-print">
-            <div className={classes.modalBackdrop} onClick={() => setModal(false)}></div>
-            <div className={classes.box}>
-              <Elements stripe={stripePromise}>
-                <PaymentSuccess session={session_id} />
-              </Elements>
-              <button className={classes.button} onClick={()=>window.print()}>Download</button>
-            </div>
-          </div> */}
+
         <Booking />
       </>
     );
