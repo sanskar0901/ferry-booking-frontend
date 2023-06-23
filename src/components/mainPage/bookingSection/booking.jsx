@@ -3,7 +3,7 @@ import classes from './booking.module.css'
 import axios from 'axios'
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import Cookies from 'js-cookie'
 import { useScreenshot, createFileName } from 'use-react-screenshot'
 import logo from '../../../assets/logoMain.svg'
@@ -155,7 +155,7 @@ export const Booking = () => {
 
       }
       <div className='flex items-center justify-center'>
-        <a href='/directions' className='underline text-[18px] text-[#484eb5] font-[700] py-2'>Location and Directions</a>
+        <Link to='/directions' className='underline text-[18px] text-[#484eb5] font-[700] py-2'>Location and Directions</Link>
       </div>
       <div className={classes.map}>
         <div className={classes.origin}>
