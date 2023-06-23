@@ -1,5 +1,6 @@
 import React from 'react'
 import classes from './aboutus.module.css'
+import { Link } from 'react-router-dom'
 
 
 export const Aboutus = () => {
@@ -14,7 +15,7 @@ export const Aboutus = () => {
                         The Otter Guy offers <b>reservation-based water taxis to the Toronto Island</b> Ward's terminal.
                     </li>
                     <li>
-                        <a className='underline cursor-pointer' href='/directions'>Click here <b>for Service Location and Directions</b></a>
+                        <Link className='underline cursor-pointer' to='/directions'>Click here <b>for Service Location and Directions</b></Link>
                     </li>
 
                     <li>
