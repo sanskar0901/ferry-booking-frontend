@@ -9,7 +9,7 @@ const stripePromise = loadStripe('pk_test_51MwPq1SB27RQWA1pF86ZOljFE3IWwg5p5lN2Z
 
 
 import Mainpage from './components/mainPage/Mainpage';
-import Direction from './components/mainPage/Direction/direction';
+import Direction from './components/direction/direction';
 
 function App() {
   const [name, setName] = useState('');
