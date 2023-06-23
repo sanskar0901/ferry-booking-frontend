@@ -9,50 +9,52 @@ export const Aboutus = () => {
             <div className={classes.content}>
                 <h1>ABOUT THE SERVICE</h1>
                 <br />
-                <br />
                 <ul className='flex flex-col gap-3'>
 
                     <li>
-                        <b>The Otter Guy</b> offers reservation-based water taxis to the Toronto Island Ward's terminal.
+                        The Otter Guy offers <b>reservation-based water taxis to the Toronto Island</b> Ward's terminal.
+                    </li>
+                    <li>
+                        <a className='underline cursor-pointer' href='/directions'>Click here <b>for Service Location and Directions</b></a>
                     </li>
 
                     <li>
-                        <b>We value your time </b> - purchase online for your selected date and time, and your departure time is guaranteed - skip the lines, no waiting at all.
+                        We value your time - purchase online for your selected date and time, and <b>your departure time is guaranteed - skip the lines, no waiting at all.</b>
 
                     </li>
 
                     <li>
-                        If you miss your departure time, you can still travel that day on the next available taxi that has available seats.
+                        <b>If you miss</b> your departure time, you can still travel that day on the next available taxi that has available seats.
                     </li>
 
+                    <li>
+                        The<b> return trip</b> tickets are <b>$35 including taxes</b>, per person. We do not offer one-way tickets.
+
+                    </li>
                     <li>
                         You can buy your ticket at the dock and travel without a reservation at any time if there are available seats.
                     </li>
 
 
-                    <li>
-                        The<b> return trip tickets are $35</b> including taxes, per person. We do not offer one-way tickets.
-
-                    </li>
 
                     <li>
                         On the way back from the island just show up at our Ward’s Island terminal at any time, without committing to a specific departure time. Full schedule is here.
 
                     </li>
                     <li>
-                        We operate our water taxis late into the night - enjoy your parties and events !
+                        We operate our <b>water taxis late into the night</b> - enjoy your parties and events !
 
                     </li>
                     <li>
-                        <b>Save the Electronic ticket to your smartphone</b> - it will also be emailed to you. Present the email on your phone, or as a printout, during boarding.
+                        Save the <b>Electronic ticket</b> to your smartphone - it will also be emailed to you. Present the email on your phone, or as a printout, during boarding.
 
                     </li>
                     <li>
-                        Tickets are <b>non-refundable but fully transferable</b> - simply email unused ticket(s) to anyone you choose.
+                        Tickets are non-refundable but <b>fully transferable</b> - simply email unused ticket(s) to anyone you choose.
 
                     </li>
                     <li>
-                        The mainland departure terminal is at the cool venue of the Docks Driving Range, next to the outdoor entertainment complex of the Docks Club - you can bypass the construction zone of downtown waterfront by departing from our dock.
+                        The mainland departure terminal is at the cool venue of the Docks Driving Range, next to the outdoor entertainment complex of the Docks Club - you can <b>bypass the construction zone of downtown waterfront</b> by departing from our dock.
 
                     </li>
                     <li>
@@ -60,31 +62,20 @@ export const Aboutus = () => {
 
                     </li>
                     <li>
-                        Ample parking available nearby. A short walk from a TTC bus stop.
+                        <b>Ample parking</b> available nearby. A <b>short walk from a TTC bus stop</b>.
 
                     </li>
                     <li>
-                        In the event of inclement weather or police water emergency the service may be cancelled - you’ll be notified through email and your purchase refunded - you may re-book right away for another available departure time.
+                        In the event of inclement weather or police water emergency the service may be cancelled - you’ll be notified through email and your purchase <b>refunded</b> - you may re-book right away for another available departure time.
 
                     </li>
                     <li>
-                        On weekends, the public Toronto Island Ferry, does not assign you a departure time when purchasing online, has hours-long wait times and typically sells out in the morning. Private water taxis from various points can not be reserved and see long lineups and difficulty with parking. Use the Otterguy water taxi and Skip the Lines! - you're welcome 🙂
-
+                        The public Toronto Island Ferry sells ticket online but does not assign you a departure time - this results in hours-long wait times on weekends. Private water taxis from various points can not be reserved and see weekend lineups and difficulty with parking. <b>Use the Otterguy water taxi and Skip the Lines!</b> - you're welcome 🙂
                     </li>
 
 
                 </ul>
-                {/* <br />
-                <br />
-                <br />
-                <h3>Please <b>NOTE</b>:</h3>
-                <br />
-                <ul>
-                    <li>In case of inclement weather or police emergency, <b>service may be cancelled</b>, You'll be notified through your <b>provided contact method</b> and your purchase will be refunded</li>
-                    <li>Please re-book for another available departure time</li>
-                    <li>On weekends, the public Toronto Island ferry cannot be reserved and has long wait times. Private water taxis also cannot be reserved and have long lineups and parking difficulties</li>
-                    <li>Use The Otter Guy for a hassle-free experience and enjoy beautiful summer days on Toronto Island</li>
-                </ul> */}
+
             </div>
 
         </div>

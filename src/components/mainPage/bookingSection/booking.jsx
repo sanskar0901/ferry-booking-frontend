@@ -155,7 +155,7 @@ export const Booking = () => {
 
       }
       <div className='flex items-center justify-center'>
-        <a href='/directions' className='underline text-[18px] text-[#484eb5] font-[700]'>Location and Directions</a>
+        <a href='/directions' className='underline text-[18px] text-[#484eb5] font-[700] py-2'>Location and Directions</a>
       </div>
       <div className={classes.map}>
         <div className={classes.origin}>
@@ -291,26 +291,24 @@ function PaymentSuccess({ session, success, setModal }) {
         <img src={logo} alt="logo" />
         <h1 className='text-black' style={{ fontSize: 30 }}>Payment Success</h1>
         <p className='text-black'>
-          <br></br>
-          <div className='flex flex-col gap-4 items-start justify-center '>
+
+          <div className='grid grid-cols-2 gap-2 items-between justify-between '>
             <p><b>From:</b> {data.from}</p>
             <p><b>To:</b> {data.to}</p>
             <p className='text-[20px]'><b>Date: {new Date(data.date).getDate() + "/" + (new Date(data.date).getMonth() + 1) + "/" + new Date(data.date).getFullYear()}</b></p>
             <p className='text-[20px]'><b>Time:{data.time}</b> </p>
+            <p><b>Ferry No.:</b> {data.ferryNo}</p>
+            <p><b>No. of seats:</b> {data.seats}</p>
             <p><b>Name:</b> {data.name}</p>
           </div>
           <br />
-          <div className='flex gap-2 items-center justify-center'>
-            <b>Ferry No.:</b> {data.ferryNo}
-            <b>No. of seats:</b> {data.seats}
-          </div>
-          <br></br>
           <img src={`data:image/png;base64,${qr}`} alt="qr" />
         </p >
       </center>
+      <p className=' text-red-500 text-[12px] text-center'>Take a screenshot of this ticket <br />or download it to your phone's Files/Downloads folder</p>
       <button className={classes.button} onClick={downloadScreenshot}>Download</button>
 
-    </div>
+    </div >
   );
 
 }

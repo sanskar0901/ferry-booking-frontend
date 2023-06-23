@@ -12,7 +12,7 @@
 }
 .content{
     width:86%;
-    margin-top: 260px;
+    margin-top: 50vh;
     margin-bottom: 60px;
 }
 .content h1{
@@ -45,6 +45,7 @@
 @media screen and (max-width:715px){
     .content{
         width:95%;
+        margin-top: 60vh;
     }
 
 .content h1{
@@ -63,6 +64,6 @@
     width:90%;
 }
 .content ul li{
-    font-size: 14px;
+    font-size: 16px;
 }
 }
