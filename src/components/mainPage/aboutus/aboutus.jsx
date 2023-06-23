@@ -1,7 +1,6 @@
 import React from 'react'
 import classes from './aboutus.module.css'
 
-import img3 from '../../../assets/img3.svg'
 
 export const Aboutus = () => {
     return (
