@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Link } from 'react-scroll';
 import logo from "../../assets/logoMain.svg"
 import cardir from "../../assets/cardir.svg"
@@ -7,6 +7,7 @@ import bus202 from "../../assets/bus202.svg"
 import bus72B from "../../assets/bus72B.svg"
 
 function Direction() {
+
     return (
         <div className="flex flex-col items-center">
             <nav className="fixed top-0 left-0 w-full bg-[#07567b] p-4">
@@ -67,7 +68,7 @@ function Direction() {
                     <p>There is construction and road closures at downtown waterfront.</p>
                     <p>Use the following for most efficient travel:</p>
                 </div>
-                <div id="carSection" className="mb-8">
+                <div id="carSection" className="mb-8 pt-8">
                     <h2 className="text-2xl font-bold">Directions by Car</h2>
                     <p>
                         By Car: The Docks Driving Range, 176 Cherry St, Toronto, ON M5A 3L2
@@ -100,7 +101,7 @@ function Direction() {
                         Driving Range to access the water taxi dock.
                     </p>
                 </div>
-                <div id="ttcSection" className="mb-8">
+                <div id="ttcSection" className="mb-8 pt-8">
                     <h2 className="text-2xl font-bold">Directions by TTC</h2>
                     <p>
                         By TTC: The Docks Driving Range, 176 Cherry St, Toronto, ON M5A 3L2
@@ -144,7 +145,7 @@ function Direction() {
                         className="my-4 max-w-full"
                     />
                 </div>
-                <div id="bicycleSection" className="mb-8">
+                <div id="bicycleSection" className="mb-8 pt-8">
                     <h2 className="text-2xl font-bold">Directions by Bicycle</h2>
                     <p>
                         By Bicycle: The Docks Driving Range, 176 Cherry St, Toronto, ON M5A

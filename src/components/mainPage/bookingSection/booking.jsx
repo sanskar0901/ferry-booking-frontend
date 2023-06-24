@@ -280,20 +280,23 @@ function PaymentSuccess({ session, success, setModal }) {
   }, [session])
   return (
     <div className='flex flex-col items-center h-[100vh]'>
-      <AiOutlineCloseCircle className='text-3xl absolute right-0 cursor-pointer' onClick={() => setModal(false)} />
+      <AiOutlineCloseCircle className='text-3xl absolute right-0 cursor-pointer' onClick={() => { confirm("Make sure that you have downloaded the ticket before closing the window. If you have not downloaded the ticket, please click on the Download button or take SS of the ticket").valueOf() ? setModal(false) : null }} />
       <center ref={ref} className='p-4'>
         <img src={logo} alt="logo" />
         <h1 className='text-black' style={{ fontSize: 30 }}>Payment Success</h1>
         <p className='text-black'>
-
-          <div className='grid grid-cols-2 gap-2 items-between justify-between '>
-            <p><b>From:</b> {data.from}</p>
-            <p><b>To:</b> {data.to}</p>
-            <p className='text-[20px]'><b>Date: {new Date(data.date).getDate() + "/" + (new Date(data.date).getMonth() + 1) + "/" + new Date(data.date).getFullYear()}</b></p>
-            <p className='text-[20px]'><b>Time:{data.time}</b> </p>
-            <p><b>Ferry No.:</b> {data.ferryNo}</p>
-            <p><b>No. of seats:</b> {data.seats}</p>
-            <p><b>Name:</b> {data.name}</p>
+          <div className='flex  gap-8 items-between justify-between '>'
+            <div className='flex flex-col gap-2 items-start justify-between '>
+              <p><b>From:</b> {data.from}</p>
+              <p><b>To:</b> {data.to}</p>
+              <p><b>Name:</b> {data.name}</p>
+              <p><b>Ferry No.:</b> {data.ferryNo}</p>
+            </div>
+            <div className='flex flex-col gap-2 items-start justify-between '>
+              <p className='text-[20px]'><b>Date: {new Date(data.date).getDate() + "/" + (new Date(data.date).getMonth() + 1) + "/" + new Date(data.date).getFullYear()}</b></p>
+              <p className='text-[20px]'><b>Time:{data.time}</b> </p>
+              <p className='text-[20px]'><b>No. of seats:</b> {data.seats}</p>
+            </div>
           </div>
           <br />
           <img src={`data:image/png;base64,${qr}`} alt="qr" />
