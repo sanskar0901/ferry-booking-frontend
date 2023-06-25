@@ -15,12 +15,14 @@ export const FooterTop = () => {
                     <p>Your hassle-free water transportation solution</p>
                 </div>
                 <div className={classes.R}>
+                    <h1 className='text-[2rem] font-bold md:pt-12'>Contact Info</h1>
                     <ul>
                         <li>
                             <img src={icon1} /> <a>The Otter Guy Inc.
                                 The Docks Driving Range, 176 Cherry St,
                                 Toronto, ON M5A 3L2</a>
                         </li>
+
                         <li>
                             <img src={icon2} /> <a href="mailto:info@otterguy.com">info@otterguy.com</a>
                         </li>
