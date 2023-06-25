@@ -280,29 +280,29 @@ function PaymentSuccess({ session, success, setModal }) {
   }, [session])
   return (
     <div className='flex flex-col items-center h-[100vh]'>
-      <AiOutlineCloseCircle className='text-3xl absolute right-0 cursor-pointer' onClick={() => { confirm("Make sure that you have downloaded the ticket before closing the window. If you have not downloaded the ticket, please click on the Download button or take SS of the ticket").valueOf() ? setModal(false) : null }} />
+      <AiOutlineCloseCircle className='text-3xl absolute right-0 cursor-pointer' onClick={() => { confirm("Make sure that you have downloaded the ticket before closing the window. If you have not downloaded the ticket, please click on the Download button or take Screen Shot of the ticket").valueOf() ? setModal(false) : null }} />
       <center ref={ref} className='p-4'>
         <img src={logo} alt="logo" />
-        <h1 className='text-black' style={{ fontSize: 30 }}>Payment Success</h1>
+        <h1 className='text-black pb-1' style={{ fontSize: 30 }}>Payment Success</h1>
         <p className='text-black'>
-          <div className='flex  gap-8 items-between justify-between '>'
-            <div className='flex flex-col gap-2 items-start justify-between '>
-              <p><b>From:</b> {data.from}</p>
-              <p><b>To:</b> {data.to}</p>
-              <p><b>Name:</b> {data.name}</p>
-              <p><b>Ferry No.:</b> {data.ferryNo}</p>
+          <div className='flex  gap-8 items-between justify-between'>
+            <div className='flex flex-col gap-1 items-start justify-between '>
+              <p className='w-[40vw] text-left'><b>From:</b> {data.from}</p>
+              <p className='w-[40vw] text-left'><b>To:</b> {data.to}</p>
+              <p className='w-[40vw] text-left'><b>Name:</b> {data.name}</p>
+              <p className='w-[40vw] text-left'><b>Ferry No.:</b> {data.ferryNo}</p>
             </div>
-            <div className='flex flex-col gap-2 items-start justify-between '>
-              <p className='text-[20px]'><b>Date: {new Date(data.date).getDate() + "/" + (new Date(data.date).getMonth() + 1) + "/" + new Date(data.date).getFullYear()}</b></p>
-              <p className='text-[20px]'><b>Time:{data.time}</b> </p>
-              <p className='text-[20px]'><b>No. of seats:</b> {data.seats}</p>
+            <div className='flex flex-col gap-1 items-start justify-between '>
+              <p className='w-[40vw] text-left'><b>Date: {new Date(data.date).getDate() + "/" + (new Date(data.date).getMonth() + 1) + "/" + new Date(data.date).getFullYear()}</b></p>
+              <p className='w-[40vw] text-left'><b>Time:{data.time}</b> </p>
+              <p className='w-[40vw] text-left'><b>No. of seats:</b> {data.seats}</p>
             </div>
           </div>
           <br />
-          <img src={`data:image/png;base64,${qr}`} alt="qr" />
+          <img className='w-[9rem]' src={`data:image/png;base64,${qr}`} alt="qr" />
         </p >
       </center>
-      <p className=' text-red-500 text-[12px] text-center'>Take a screenshot of this ticket <br />or download it to your phone's Files/Downloads folder</p>
+      <p className=' text-red-700 text-[16px] font-semibold text-center'>Take a screenshot of this ticket <br />or download it to your phone's Files/Downloads folder</p>
       <button className={classes.button} onClick={downloadScreenshot}>Download</button>
 
     </div >
