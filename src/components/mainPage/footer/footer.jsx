@@ -15,7 +15,7 @@ export const FooterTop = () => {
                     <p>Your hassle-free water transportation solution</p>
                 </div>
                 <div className={classes.R}>
-                    <h1 className='text-[2rem] font-bold md:pt-12'>Contact Info</h1>
+                    <h1 className='text-[2rem] font-bold md:pt-12'>Contact Info.</h1>
                     <ul>
                         <li>
                             <img src={icon1} /> <a>The Otter Guy Inc.

@@ -220,7 +220,7 @@ abbr {
 
 @media screen and (max-width:800px){
 .mblbtn{
-    width: 7vw !important;
+    width: 22vw !important;
 }
 .calendar{
     left:1.2rem

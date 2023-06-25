@@ -13,12 +13,7 @@ function Direction() {
             <nav className="fixed top-0 left-0 w-full bg-[#07567b] p-4">
                 <ul className="flex justify-between space-x-4 items-center text-white">
                     <li>
-                        <button
-                            onClick={() => window.history.back()}
-                            className="bg-[#FFC60B] text-black px-4 rounded-lg py-2 md:text-[20px] "
-                        >
-                            Back
-                        </button>
+                        <img src={logo} className='w-[8vh]' />
                     </li>
                     <li>
                         <Link
@@ -57,8 +52,14 @@ function Direction() {
                         </Link>
                     </li>
                     <li>
-                        <img src={logo} className='w-[8vh]' />
+                        <button
+                            onClick={() => window.history.back()}
+                            className="bg-[#FFC60B] text-black px-4 rounded-lg py-2 md:text-[20px] "
+                        >
+                            Back
+                        </button>
                     </li>
+
                 </ul>
             </nav>
             <div className="mt-24 p-4 text-black ">
