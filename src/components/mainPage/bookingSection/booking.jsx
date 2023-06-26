@@ -47,8 +47,8 @@ export const Booking = () => {
 
   }
   const handleDateChange = (date) => {
-    setIsOpen(false);
     setDate(date);
+    setIsOpen(false);
     const data = {
       to,
       from,
@@ -64,9 +64,25 @@ export const Booking = () => {
         alert("No ferry available")
       }
       else {
-        setFerry(res.data.ferry)
-        console.log(ferry)
-        setAvailibility(res.data.alertmsg)
+        const currentDate = new Date();
+        const filteredFerry = res.data.ferry.filter(ferry => {
+          const ferryDate = new Date(ferry.startDate);
+          const ferryTime = ferry.time_slot.split(":");
+          ferryDate.setHours(ferryTime[0]);
+          ferryDate.setMinutes(ferryTime[1]);
+          return ferryDate >= currentDate;
+        });
+        if (filteredFerry.length === 0) {
+          alert("No ferry available")
+          setAvailibility("No")
+          setFerry(filteredFerry);
+
+        }
+        else {
+          setFerry(filteredFerry);
+          console.log(filteredFerry);
+          setAvailibility(res.data.alertmsg);
+        }
       }
     })
   };
@@ -200,18 +216,24 @@ export const Booking = () => {
         <div className={classes.inpCtn} onClick={datePickerCtn}>
           <p>Select Date</p>
           {isOpen && (
-            <Calendar
-              onChange={handleDateChange}
-              value={date}
-              className={`absolute p-4 text-black ${classes.calendar}`}
-            />
+            <div onClick={(e) => e.stopPropagation()}>
+              <Calendar
+                onChange={handleDateChange}
+                value={date}
+                className={`absolute p-4 text-black ${classes.calendar}`}
+              />
+            </div>
           )}
 
           <p className='flex items-end'>
-            <p style={{ fontSize: 28, fontWeight: 600, display: 'inline-block' }}>{date.toLocaleString('en-us', { day: 'numeric' })}</p><p>{date.toLocaleString('en-us', { month: 'long' })}'{date.toLocaleString('en-us', { year: 'numeric' })}</p>
+            <p style={{ fontSize: 28, fontWeight: 600, display: 'inline-block' }}>
+              {date.toLocaleString('en-us', { day: 'numeric' })}
+            </p>
+            <p>
+              {date.toLocaleString('en-us', { month: 'long' })}'{date.toLocaleString('en-us', { year: 'numeric' })}
+            </p>
           </p>
         </div>
-
         <div className={classes.inpCtn} onClick={departurePickerCtn}>
           <p>Departure Time</p>
           <div className={classes.inp}>
@@ -221,7 +243,7 @@ export const Booking = () => {
               setPrice(e.target.options[e.target.selectedIndex].getAttribute("data-price"));
               setCapacity(e.target.options[e.target.selectedIndex].getAttribute("data-capacity"));
               setFerryId(e.target.options[e.target.selectedIndex].getAttribute("data-ferryId"));
-            }} className={`grid grid-col-3 w-[22vw] text-[1.2rem] px-1 py-2 leading-tight text-black placeholder:text-blue-400 focus:outline-none focus:shadow-outline hover:cursor-pointer bg-white ${classes.mblbtn}`} ref={departureTimeRef}>
+            }} className={`grid grid-col-3 text-[1.2rem] px-1 py-2 leading-tight text-black placeholder:text-blue-400 focus:outline-none focus:shadow-outline hover:cursor-pointer bg-white ${classes.mblbtn}`} ref={departureTimeRef}>
               <option value="">Select a time slot</option>
               {ferry.map((ferr, index) => (
                 <option className={`p-2 flex justify-between gap-5  ${ferr.capacity < 10 ? 'text-rose-700' : `${ferr.capacity < 20 ? 'text-yellow-400' : 'text-green-500'}`}`} key={index} value={ferr.time_slot} data-price={ferr.fare} data-ferryId={ferr._id}
@@ -287,15 +309,15 @@ function PaymentSuccess({ session, success, setModal }) {
         <p className='text-black'>
           <div className='flex  gap-8 items-between justify-between'>
             <div className='flex flex-col gap-1 items-start justify-between '>
-              <p className='w-[40vw] text-left'><b>From:</b> {data.from}</p>
-              <p className='w-[40vw] text-left'><b>To:</b> {data.to}</p>
-              <p className='w-[40vw] text-left'><b>Name:</b> {data.name}</p>
-              <p className='w-[40vw] text-left'><b>Ferry No.:</b> {data.ferryNo}</p>
+              <p className='w-[40vw] md:w-[15vw] text-left'><b>From:</b> {data.from}</p>
+              <p className='w-[40vw] md:w-[15vw] text-left'><b>To:</b> {data.to}</p>
+              <p className='w-[40vw] md:w-[15vw] text-left'><b>Name:</b> {data.name}</p>
+              <p className='w-[40vw] md:w-[15vw] text-left'><b>Ferry No.:</b> {data.ferryNo}</p>
             </div>
             <div className='flex flex-col gap-1 items-start justify-between '>
-              <p className='w-[40vw] text-left'><b>Date: {new Date(data.date).getDate() + "/" + (new Date(data.date).getMonth() + 1) + "/" + new Date(data.date).getFullYear()}</b></p>
-              <p className='w-[40vw] text-left'><b>Time:{data.time}</b> </p>
-              <p className='w-[40vw] text-left'><b>No. of seats:</b> {data.seats}</p>
+              <p className='w-[40vw] md:w-[15vw] text-left'><b>Date: {new Date(data.date).getDate() + "/" + (new Date(data.date).getMonth() + 1) + "/" + new Date(data.date).getFullYear()}</b></p>
+              <p className='w-[40vw] md:w-[15vw] text-left'><b>Time:{data.time}</b> </p>
+              <p className='w-[40vw] md:w-[15vw] text-left'><b>No. of seats:</b> {data.seats}</p>
             </div>
           </div>
           <br />

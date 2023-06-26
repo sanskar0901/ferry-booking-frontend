@@ -7,6 +7,9 @@ import bus202 from "../../assets/bus202.svg"
 import bus72B from "../../assets/bus72B.svg"
 
 function Direction() {
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    })
 
     return (
         <div className="flex flex-col items-center">
