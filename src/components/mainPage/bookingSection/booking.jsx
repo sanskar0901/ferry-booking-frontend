@@ -320,7 +320,6 @@ function PaymentSuccess({ session, success, setModal }) {
               <p className='w-[40vw] md:w-[15vw] text-left'><b>No. of seats:</b> {data.seats}</p>
             </div>
           </div>
-          <br />
           <img className='w-[9rem]' src={`data:image/png;base64,${qr}`} alt="qr" />
         </p >
       </center>
