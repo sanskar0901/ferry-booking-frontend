@@ -302,7 +302,7 @@ function PaymentSuccess({ session, success, setModal }) {
   }, [session])
   return (
     <div className='flex flex-col items-center h-[100vh]'>
-      <AiOutlineCloseCircle className='text-3xl absolute right-0 cursor-pointer' onClick={() => { confirm("Make sure that you have downloaded the ticket before closing the window. If you have not downloaded the ticket, please click on the Download button or take Screen Shot of the ticket").valueOf() ? setModal(false) : null }} />
+      <AiOutlineCloseCircle className='text-3xl absolute right-0 cursor-pointer' onClick={() => { confirm("Make sure you have saved the eticket to your phone (by pressing the Download button or taking a screenshot). You may also print it. After you close this window, you will no longer see the ticket.").valueOf() ? setModal(false) : null }} />
       <center ref={ref} className='p-4'>
         <img src={logo} alt="logo" />
         <h1 className='text-black pb-1' style={{ fontSize: 30 }}>Payment Success</h1>
